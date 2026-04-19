@@ -1,0 +1,1104 @@
+<style>
+@page { size: A4; margin: 0; }
+@media print {
+  body { margin: 0; padding: 0; background: white; }
+  .page { page-break-after: always; page-break-inside: avoid; box-shadow: none; margin: 0; }
+  .page:last-child { page-break-after: auto; }
+}
+@media screen {
+  body { background: #e8e4dc; padding: 20px 10px; }
+  .page { box-shadow: 0 2px 14px rgba(0,0,0,0.18); margin: 0 auto 20px; }
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --ink: #111;
+  --mid: #555;
+  --dim: #8a8a86;
+  --rule: #d0ccc5;
+  --soft: #faf8f4;
+  --accent: #6b5a3a;
+}
+
+body {
+  font-family: Georgia, 'Times New Roman', serif;
+  color: var(--ink);
+  font-size: 10.2pt;
+  line-height: 1.55;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+.page {
+  width: 210mm;
+  height: 297mm;
+  background: white;
+  padding: 18mm 20mm 20mm;
+  position: relative;
+  overflow: hidden;
+}
+
+.pagenum {
+  position: absolute;
+  bottom: 10mm;
+  right: 20mm;
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 7.5pt;
+  color: var(--dim);
+  letter-spacing: 1.5px;
+}
+.footer {
+  position: absolute;
+  bottom: 10mm;
+  left: 20mm;
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 7pt;
+  color: var(--dim);
+  letter-spacing: 0.3px;
+}
+
+/* Running header */
+.run-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 5mm;
+  padding-bottom: 2.5mm;
+  border-bottom: 1px solid var(--rule);
+}
+.run-header .sec {
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 8pt;
+  letter-spacing: 2.6px;
+  text-transform: uppercase;
+  color: var(--mid);
+}
+.mini-logo {
+  display: flex; align-items: center; gap: 4mm;
+}
+
+/* === Cover === */
+.cover-hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 34mm;
+  margin-bottom: 14mm;
+}
+.title {
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 38pt;
+  font-weight: 300;
+  letter-spacing: -1.3px;
+  margin-top: 9mm;
+  color: var(--mid);
+}
+.edition {
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 8.5pt;
+  letter-spacing: 2.8px;
+  text-transform: uppercase;
+  color: var(--ink);
+  margin-top: 11mm;
+  padding: 2.5mm 6mm;
+  border: 1.2px solid var(--ink);
+}
+.cover-tag {
+  text-align: center;
+  font-family: Georgia, serif;
+  font-size: 11pt;
+  line-height: 1.8;
+  color: var(--ink);
+  max-width: 130mm;
+  margin: 0 auto;
+  font-style: italic;
+}
+.cover-byline {
+  position: absolute;
+  bottom: 18mm;
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 10pt;
+  color: var(--mid);
+}
+.cover-byline .by {
+  font-size: 8pt;
+  color: var(--dim);
+  display: block;
+  margin-bottom: 1.5mm;
+  letter-spacing: 1.5px;
+}
+
+/* === Typography === */
+h1 {
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 20pt;
+  font-weight: 300;
+  letter-spacing: -0.5px;
+  margin: 0 0 5mm;
+  padding-bottom: 2.5mm;
+  border-bottom: 2px solid var(--ink);
+}
+h2 {
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 8pt;
+  font-weight: 700;
+  letter-spacing: 2.6px;
+  text-transform: uppercase;
+  margin: 5.5mm 0 2.5mm;
+  padding-bottom: 1.5mm;
+  border-bottom: 2px solid var(--ink);
+}
+h2:first-child { margin-top: 0; }
+h3 {
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 9.5pt;
+  font-weight: 700;
+  margin: 3mm 0 1mm;
+}
+p { margin-bottom: 2.3mm; font-size: 9.8pt; }
+p:last-child { margin-bottom: 0; }
+em { font-style: italic; }
+strong { font-weight: 700; }
+
+.lede {
+  font-size: 10.5pt;
+  line-height: 1.65;
+  margin-bottom: 3.5mm;
+  color: var(--mid);
+  font-style: italic;
+}
+
+/* === Layout === */
+.two { display: grid; grid-template-columns: 1fr 1fr; gap: 8mm; align-items: start; }
+.two-tight { display: grid; grid-template-columns: 1fr 1.2fr; gap: 8mm; align-items: start; }
+
+hr { border: none; border-top: 1px solid var(--rule); margin: 4mm 0; }
+
+/* === Lists === */
+ul { list-style: none; margin: 0; padding: 0; }
+ul li {
+  font-size: 9.5pt;
+  line-height: 1.55;
+  padding-left: 9px;
+  position: relative;
+  margin-bottom: 1mm;
+}
+ul li::before {
+  content: "—";
+  position: absolute;
+  left: 0;
+  color: var(--dim);
+}
+.muted { color: var(--dim); font-size: 8.8pt; }
+
+ol {
+  list-style: none;
+  counter-reset: ol;
+  padding: 0;
+}
+ol li {
+  counter-increment: ol;
+  font-size: 9.5pt;
+  line-height: 1.55;
+  padding-left: 9mm;
+  position: relative;
+  margin-bottom: 1.6mm;
+}
+ol li::before {
+  content: counter(ol) ".";
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-family: system-ui, -apple-system, sans-serif;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+/* === Callout === */
+.callout {
+  border: 1.2px solid var(--ink);
+  padding: 3mm 4mm;
+  margin: 3mm 0;
+  background: var(--soft);
+}
+.callout-label {
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 7pt;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 1.2mm;
+}
+.callout p { margin: 0; font-size: 9pt; line-height: 1.55; }
+.callout p + p { margin-top: 1.5mm; }
+
+.callout-dark {
+  border: none;
+  background: var(--ink);
+  color: white;
+  padding: 3mm 4mm;
+  margin: 3mm 0;
+}
+.callout-dark .callout-label { color: white; }
+.callout-dark p { margin: 0; font-size: 9pt; line-height: 1.55; }
+
+/* === Dice / inline === */
+.dice {
+  font-family: 'Courier New', Courier, monospace;
+  background: #f0ede7;
+  border: 1px solid #c8c4bd;
+  padding: 0 4px;
+  border-radius: 2px;
+  font-size: 8.6pt;
+}
+.pill {
+  display: inline-block;
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 7.5pt;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  padding: 1px 6px;
+  border: 1px solid var(--ink);
+  border-radius: 2px;
+}
+
+/* === Coin === */
+.coin {
+  display: inline-block;
+  width: 3mm;
+  height: 3mm;
+  border-radius: 50%;
+  border: 1.2px solid var(--ink);
+  vertical-align: -0.5mm;
+  margin: 0 0.3mm;
+}
+.coin-w { background: white; }
+.coin-g { background: #3a3a3a; }
+
+/* === Tables === */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 8.7pt;
+  margin: 2mm 0;
+}
+th {
+  font-size: 7pt;
+  font-weight: 700;
+  letter-spacing: 1.3px;
+  text-transform: uppercase;
+  border-bottom: 2px solid var(--ink);
+  padding: 2mm 2.5mm 1.8mm 0;
+  text-align: left;
+  color: var(--ink);
+  vertical-align: bottom;
+}
+td {
+  border-bottom: 1px solid var(--rule);
+  padding: 1.8mm 2.5mm 1.8mm 0;
+  vertical-align: top;
+  line-height: 1.45;
+}
+td.name { font-weight: 700; font-size: 9pt; }
+td.dice-col { font-family: 'Courier New', Courier, monospace; font-size: 8.3pt; white-space: nowrap; }
+td.cost-col { white-space: nowrap; }
+td.resembles { font-size: 8pt; color: var(--mid); font-style: italic; }
+
+/* === Activity cluster heading === */
+.cluster-head {
+  margin-top: 4mm;
+  padding: 1.5mm 0;
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 8.5pt;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  border-top: 2px solid var(--ink);
+  border-bottom: 1px solid var(--rule);
+  background: #f6f4ee;
+  padding-left: 3mm;
+}
+.cluster-head:first-of-type { margin-top: 0; }
+
+/* === Checklist === */
+.check-list {
+  padding-left: 0;
+}
+.check-list li {
+  padding-left: 7mm;
+  position: relative;
+  margin-bottom: 2mm;
+  font-size: 9.5pt;
+  line-height: 1.55;
+}
+.check-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 1.2mm;
+  width: 4mm;
+  height: 4mm;
+  border: 1.3px solid var(--ink);
+  border-radius: 1px;
+}
+
+/* === Big block quote === */
+.mantra {
+  text-align: center;
+  font-family: Georgia, serif;
+  font-style: italic;
+  font-size: 14pt;
+  line-height: 1.5;
+  padding: 5mm 10mm;
+  margin: 3mm 0;
+  border-top: 1px solid var(--ink);
+  border-bottom: 1px solid var(--ink);
+}
+.mantra strong {
+  font-style: normal;
+  display: block;
+  font-size: 9pt;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--mid);
+  margin-bottom: 2mm;
+  font-family: system-ui, sans-serif;
+  font-weight: 700;
+}
+
+/* === Section intro === */
+.intro-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 5mm;
+  margin: 3mm 0 4mm;
+}
+.intro-card {
+  border: 1.2px solid var(--ink);
+  padding: 3mm 3.5mm;
+}
+.intro-card-label {
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 7pt;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--mid);
+  margin-bottom: 1.2mm;
+}
+.intro-card-title {
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 10pt;
+  font-weight: 700;
+  margin-bottom: 1.5mm;
+}
+.intro-card-body {
+  font-size: 8.8pt;
+  line-height: 1.5;
+}
+
+/* === Focus dials (Master's focus section) === */
+.dial-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 4mm;
+  margin: 2mm 0 3mm;
+}
+.dial {
+  border: 1.2px solid var(--ink);
+  padding: 3mm 3.5mm;
+}
+.dial-label {
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 8pt;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-bottom: 1mm;
+}
+.dial-poles {
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 7.5pt;
+  color: var(--mid);
+  margin-bottom: 1.5mm;
+  letter-spacing: 0.3px;
+}
+.dial-body {
+  font-size: 8.7pt;
+  line-height: 1.5;
+}
+
+/* === Cheatsheet grid === */
+.cheat-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5mm;
+}
+.cheat-cell h2 { margin-top: 0; }
+.cheat-list li { margin-bottom: 0.8mm; font-size: 8.8pt; }
+.cheat-table th { font-size: 6.6pt; padding: 1.2mm 2mm 1mm 0; }
+.cheat-table td { font-size: 8pt; padding: 1mm 2mm 1mm 0; }
+.cheat-table td.name { font-size: 8.2pt; }
+
+/* === Credits === */
+.credit {
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 7.3pt;
+  color: var(--dim);
+  text-align: center;
+  margin-top: 5mm;
+  padding-top: 3mm;
+  border-top: 1px solid var(--rule);
+  line-height: 1.6;
+  letter-spacing: 0.2px;
+}
+
+/* SVG logo shared inline */
+.logo-rhombus-12 polygon { stroke: #111; stroke-width: 1.3; stroke-linejoin: round; fill: none; }
+.logo-rhombus-mini polygon { stroke: #111; stroke-width: 2; stroke-linejoin: round; fill: none; }
+</style>
+
+<!-- ============================================
+     PAGE 1 · COVER
+============================================ -->
+<div class="page">
+  <div class="cover-hero">
+    <img src="../assets/lgj_logo.svg" alt="Le Grand Jeu" width="240" style="display:block">
+    <div class="title">Le Grand Jeu</div>
+    <div class="edition">Game Master's Manual &amp; Cheatsheet · English Edition</div>
+  </div>
+
+  <div class="cover-tag">
+    A guide for the person who runs the economy,
+    reads the room, spins the wheel, and says
+    <strong style="font-style:normal">"Yes, and how?"</strong>
+    to whatever the table invents next.
+  </div>
+
+  <div class="cover-byline">
+    <span class="by">A GAME BY</span>
+    Federico Bonelli &amp; Raffaella Rovida
+  </div>
+
+  <div class="pagenum">1 / 8</div>
+  <div class="footer">legrandjeu.net · CC BY-NC-SA 4.0</div>
+</div>
+
+<!-- ============================================
+     PAGE 2 · WHAT'S DIFFERENT ABOUT LGJ
+============================================ -->
+<div class="page">
+  <div class="run-header">
+    <span class="sec">What's different about LGJ</span>
+    <svg class="logo-rhombus-mini" width="32" height="17" viewBox="0 0 240 128">
+      <polygon points="60,0 40,34.64 80,34.64"/><polygon points="60,0 100,0 80,34.64"/>
+      <polygon points="100,0 80,34.64 120,34.64"/><polygon points="100,0 140,0 120,34.64"/>
+      <polygon points="140,0 120,34.64 160,34.64"/><polygon points="140,0 180,0 160,34.64"/>
+      <polygon points="180,0 160,34.64 200,34.64"/>
+      <polygon points="40,34.64 20,69.28 60,69.28"/><polygon points="40,34.64 80,34.64 60,69.28"/>
+      <polygon points="80,34.64 60,69.28 100,69.28"/><polygon points="80,34.64 120,34.64 100,69.28"/>
+      <polygon points="120,34.64 100,69.28 140,69.28"/><polygon points="120,34.64 160,34.64 140,69.28"/>
+      <polygon points="160,34.64 140,69.28 180,69.28"/>
+      <polygon points="20,69.28 0,103.92 40,103.92"/><polygon points="20,69.28 60,69.28 40,103.92"/>
+      <polygon points="60,69.28 40,103.92 80,103.92"/><polygon points="60,69.28 100,69.28 80,103.92"/>
+      <polygon points="100,69.28 80,103.92 120,103.92"/><polygon points="100,69.28 140,69.28 120,103.92"/>
+      <polygon points="140,69.28 120,103.92 160,103.92"/>
+    </svg>
+  </div>
+
+  <h1>Before you run your first table</h1>
+
+  <p class="lede">If you've run a D&amp;D session, a Blades in the Dark heist, or any improv-heavy TTRPG, you already have most of the skills. But LGJ will ask you to suppress a few reflexes and develop others. Read this before your first game.</p>
+
+  <div class="intro-grid">
+    <div class="intro-card">
+      <div class="intro-card-label">Reflex to suppress</div>
+      <div class="intro-card-title">The adversary posture</div>
+      <div class="intro-card-body">You are not the players' opponent. There is no BBEG. The world itself — its physics, scarcity, and consequences — is the opposition. Your job is to model it honestly, not to defeat the table.</div>
+    </div>
+    <div class="intro-card">
+      <div class="intro-card-label">Reflex to suppress</div>
+      <div class="intro-card-title">Plot-driven pacing</div>
+      <div class="intro-card-body">There is no story you are steering toward. The story is emergent; the round structure is the metronome. If nothing dramatic happens for two rounds, that's fine — the drama will come from the wheel, the economy, or an assembly.</div>
+    </div>
+    <div class="intro-card">
+      <div class="intro-card-label">Reflex to suppress</div>
+      <div class="intro-card-title">Rule-of-cool resolution</div>
+      <div class="intro-card-body">"That sounds awesome, roll for it" works in TTRPGs. In LGJ, awesome ideas still need a cost, a yield, and a grey footprint. Beauty is not an economic argument — but it can earn social value.</div>
+    </div>
+  </div>
+
+  <h2>Reflexes to develop instead</h2>
+
+  <h3>Thinking in economics, not fiction</h3>
+  <p>Every player proposal needs three numbers before it can be played: a <strong>construction cost</strong> (one-off), an <strong>operation cost</strong> (per round), and a <strong>yield</strong> (usually a dice expression). You will improvise these the way a D&amp;D GM improvises DCs — fast, calibrated, with a table for reference.</p>
+
+  <h3>Keeping the economy visible</h3>
+  <p>Tokens on the table are not bookkeeping — they are the game. Players read the two collective pots, their own stacks, and each other's at a glance. Never resolve a transaction mentally; always move physical tokens. When in doubt, slow down and show the math.</p>
+
+  <h3>Facilitating, not arbitrating</h3>
+  <p>When a player invents something you've never seen — a carbon-credit market, a mutual-aid cooperative, a solar farm — don't rule from the chair. Ask the table: <em>"Does this sound like it should cost more than a shop or less? Should it produce grey?"</em> The group's collective knowledge is your calibration instrument.</p>
+
+  <div class="callout-dark">
+    <div class="callout-label">The golden rule</div>
+    <p><strong>"Yes, and how?"</strong> &nbsp;— borrowed from improv theatre. Whatever a player proposes, your default is acceptance. The only question is <em>how</em> it enters the game: at what cost, with what yield, with what grey footprint, on or off the grid. Saying "no" is a last resort and almost always a sign you haven't yet asked the right "how".</p>
+  </div>
+
+  <h2>The GM's three focus dials</h2>
+  <p>During play, keep a part of your attention on three meters. Each has an opposite pole. Your job is to notice when one is drifting to an extreme and nudge back.</p>
+
+  <div class="dial-row">
+    <div class="dial">
+      <div class="dial-label">Stress</div>
+      <div class="dial-poles">Challenged ↔ Empowered</div>
+      <div class="dial-body">Players should feel the economy bite, but never feel the game is rigged. If someone is visibly frustrated for two rounds, give them a cheap win or a fortune card.</div>
+    </div>
+    <div class="dial">
+      <div class="dial-label">Artist's block</div>
+      <div class="dial-poles">Open ↔ Structured</div>
+      <div class="dial-body">Too much freedom and players freeze. Too much structure and they stop inventing. If ideas dry up, offer a concrete example. If ideas sprawl, ask for a cost.</div>
+    </div>
+    <div class="dial">
+      <div class="dial-label">Engagement</div>
+      <div class="dial-poles">Participation ↔ Tempo</div>
+      <div class="dial-body">Ensure every player has spoken each round. If the loudest voice has dominated three turns, give the spotlight explicitly. Keep rounds under ~20 minutes.</div>
+    </div>
+  </div>
+
+  <div class="pagenum">2 / 8</div>
+  <div class="footer">legrandjeu.net</div>
+</div>
+
+<!-- ============================================
+     PAGE 3 · BEFORE THE GAME (SESSION ZERO)
+============================================ -->
+<div class="page">
+  <div class="run-header">
+    <span class="sec">Before the game</span>
+    <svg class="logo-rhombus-mini" width="32" height="17" viewBox="0 0 240 128">
+      <polygon points="60,0 40,34.64 80,34.64"/><polygon points="60,0 100,0 80,34.64"/>
+      <polygon points="100,0 80,34.64 120,34.64"/><polygon points="100,0 140,0 120,34.64"/>
+      <polygon points="140,0 120,34.64 160,34.64"/><polygon points="140,0 180,0 160,34.64"/>
+      <polygon points="180,0 160,34.64 200,34.64"/>
+      <polygon points="40,34.64 20,69.28 60,69.28"/><polygon points="40,34.64 80,34.64 60,69.28"/>
+      <polygon points="80,34.64 60,69.28 100,69.28"/><polygon points="80,34.64 120,34.64 100,69.28"/>
+      <polygon points="120,34.64 100,69.28 140,69.28"/><polygon points="120,34.64 160,34.64 140,69.28"/>
+      <polygon points="160,34.64 140,69.28 180,69.28"/>
+      <polygon points="20,69.28 0,103.92 40,103.92"/><polygon points="20,69.28 60,69.28 40,103.92"/>
+      <polygon points="60,69.28 40,103.92 80,103.92"/><polygon points="60,69.28 100,69.28 80,103.92"/>
+      <polygon points="100,69.28 80,103.92 120,103.92"/><polygon points="100,69.28 140,69.28 120,103.92"/>
+      <polygon points="140,69.28 120,103.92 160,103.92"/>
+    </svg>
+  </div>
+
+  <h1>Session zero</h1>
+
+  <p class="lede">Half the quality of a game is decided before any dice roll. Use 10–15 minutes at the top of the session to make these choices deliberately rather than by default.</p>
+
+  <h2>Choose the scenario</h2>
+  <p>A <strong>scenario</strong> is a situation that frames the session: the place, its resources, its stresses, its question. The SPES scenario asks "can we build a society inside planetary boundaries?". A textile-waste scenario asks "what do we do with the bales that keep arriving?". Choose one from the scenario pack, or write your own on a scenario card.</p>
+  <p>If this is the table's first game, prefer a <strong>simple, local scenario</strong> (a single bioregion, one river, no exotic technology). Complexity compounds fast.</p>
+
+  <h2>Brief the players</h2>
+  <p>Describe the world in two minutes: geography, population, climate, access to grid. Let players ask questions — but avoid over-specifying. Gaps are invitations for their invention.</p>
+
+  <p>Introduce the <strong>two currencies</strong> physically: hold up a white, hold up a grey, say what each means for this scenario (money/resources/knowledge vs pollution/depletion/waste). In an industrial scenario grey is mostly CO₂; in a rural one it might be soil erosion or water loss. Name it.</p>
+
+  <h2>Set the governance rule</h2>
+  <p>Flip a coin: <em>heads</em> = majority, <em>tails</em> = consensus. This determines how assemblies resolve. Consensus produces richer discussion but can stall; majority is faster but can exclude. Honour the coin — don't "re-flip until the one you wanted."</p>
+
+  <h2>Tune the wheel</h2>
+  <p>Default proportions are 50% LGJ (collective) / 20% Fortune (personal) / 15% Invent / 15% Destroy. The scenario may override this. A crisis scenario can go 70% LGJ. A "building peacetime" scenario might drop Destroy to 5%.</p>
+
+  <h2>Hold the victory rule until asked</h2>
+  <p>Don't announce how to win. Wait for the first player to ask. Who asks first — and what they assume victory means — tells you a lot about what this table wants from the game. Then reveal the rule, or ask the table to choose one of: individual score, collective survival, lowest-waste table.</p>
+
+  <h2>Roll starting resources with the table watching</h2>
+  <ol>
+    <li>Each player rolls <span class="dice">1d6</span> for starting territories and places them on or off the grid, narrating what the land is used for.</li>
+    <li>Each player rolls <span class="dice">2d6</span> whites and <span class="dice">1d6</span> greys — the greys are starting baggage (legacy pollution, debts, accumulated impact), not a penalty.</li>
+    <li>Each player names their starting activity. You write it on an element piece with cost and yield — see page 5 for calibration.</li>
+  </ol>
+
+  <div class="callout">
+    <div class="callout-label">Facilitator note</div>
+    <p>If the table is diverse (language, experience, power), seed the starting positions yourself rather than by random roll — give the quieter players slightly more land, or the off-grid option they asked for. This is one of the places where the GM's discretion legitimately overrides the dice.</p>
+  </div>
+
+  <h2>Explain the tax, then start</h2>
+  <p>On-grid players pay 1 white per round into the local pot. This is visible, unavoidable, and frames the first question any new player asks: <em>"should I go off-grid?"</em> — which is the exact conversation the game wants to provoke.</p>
+
+  <div class="pagenum">3 / 8</div>
+  <div class="footer">legrandjeu.net</div>
+</div>
+
+<!-- ============================================
+     PAGE 4 · RUNNING THE ECONOMY
+============================================ -->
+<div class="page">
+  <div class="run-header">
+    <span class="sec">Running the economy · part 1</span>
+    <svg class="logo-rhombus-mini" width="32" height="17" viewBox="0 0 240 128">
+      <polygon points="60,0 40,34.64 80,34.64"/><polygon points="60,0 100,0 80,34.64"/>
+      <polygon points="100,0 80,34.64 120,34.64"/><polygon points="100,0 140,0 120,34.64"/>
+      <polygon points="140,0 120,34.64 160,34.64"/><polygon points="140,0 180,0 160,34.64"/>
+      <polygon points="180,0 160,34.64 200,34.64"/>
+      <polygon points="40,34.64 20,69.28 60,69.28"/><polygon points="40,34.64 80,34.64 60,69.28"/>
+      <polygon points="80,34.64 60,69.28 100,69.28"/><polygon points="80,34.64 120,34.64 100,69.28"/>
+      <polygon points="120,34.64 100,69.28 140,69.28"/><polygon points="120,34.64 160,34.64 140,69.28"/>
+      <polygon points="160,34.64 140,69.28 180,69.28"/>
+      <polygon points="20,69.28 0,103.92 40,103.92"/><polygon points="20,69.28 60,69.28 40,103.92"/>
+      <polygon points="60,69.28 40,103.92 80,103.92"/><polygon points="60,69.28 100,69.28 80,103.92"/>
+      <polygon points="100,69.28 80,103.92 120,103.92"/><polygon points="100,69.28 140,69.28 120,103.92"/>
+      <polygon points="140,69.28 120,103.92 160,103.92"/>
+    </svg>
+  </div>
+
+  <h1>Costing, yielding, calibrating</h1>
+
+  <p class="lede">The core mechanical job. Every activity on the board is an <strong>element</strong>, and every element has four values. Your skill as GM is improvising those values fast, fairly, and in proportion to what's already on the table.</p>
+
+  <h2>Element anatomy</h2>
+
+  <div style="display:flex;gap:6mm;align-items:flex-start;margin:3mm 0 4mm">
+    <svg width="280" height="110" viewBox="0 0 300 108" fill="none" stroke="#111" stroke-width="1" style="flex-shrink:0">
+      <polygon points="50,35 150,5 250,35 250,100 50,100"/>
+      <text x="150" y="72" text-anchor="middle" font-family="Georgia,serif" font-size="13" fill="#111" stroke="none" font-style="italic">Small Farm</text>
+      <circle cx="150" cy="16" r="4" fill="white"/>
+      <circle cx="64" cy="58" r="3.5" fill="white"/>
+      <circle cx="64" cy="70" r="3.5" fill="#3a3a3a"/>
+      <text x="238" y="62" text-anchor="end" font-family="'Courier New',monospace" font-size="10" fill="#111" stroke="none" font-weight="700">d6</text>
+      <circle cx="230" cy="58" r="3.5" fill="white" stroke="#111" stroke-width="1"/>
+      <text x="150" y="4" text-anchor="middle" font-family="system-ui,sans-serif" font-size="7.5" fill="#555" stroke="none" letter-spacing="1">CONSTRUCTION COST</text>
+      <text x="14" y="63" text-anchor="start" font-family="system-ui,sans-serif" font-size="7.5" fill="#555" stroke="none" letter-spacing="1">OPERATION</text>
+      <text x="14" y="72" text-anchor="start" font-family="system-ui,sans-serif" font-size="7.5" fill="#555" stroke="none" letter-spacing="1">PER ROUND</text>
+      <text x="286" y="63" text-anchor="end" font-family="system-ui,sans-serif" font-size="7.5" fill="#555" stroke="none" letter-spacing="1">YIELD</text>
+    </svg>
+    <div>
+      <p style="font-size:9pt;margin-bottom:2mm"><strong>Construction cost</strong> — whites paid once, when the element is first built. Inherited starting activities have cost zero.</p>
+      <p style="font-size:9pt;margin-bottom:2mm"><strong>Operation cost</strong> — whites and/or greys paid every round the element is active. Can be zero.</p>
+      <p style="font-size:9pt;margin:0"><strong>Yield</strong> — a dice expression. Player rolls each round they operate the element, receives that many whites. Some elements also produce greys as a by-product — note a grey coin next to the yield.</p>
+    </div>
+  </div>
+
+  <h2>Calibration in four questions</h2>
+  <p>When a player proposes a new activity, ask yourself (or the table):</p>
+  <ol>
+    <li><strong>How hard is this to build?</strong> Hand-tool craft = 0–2 whites. Small shop = 2–4. Factory or hospital = 6–12. Major infrastructure = 15+. This is the construction cost.</li>
+    <li><strong>What does it consume every round it runs?</strong> A farm eats labour and water. A hospital burns energy and supplies. A festival consumes time but almost nothing material. This is the operation cost.</li>
+    <li><strong>What does it produce, and how reliably?</strong> Reliable, modest = <span class="dice">d4</span>. Normal, variable = <span class="dice">d6</span> or <span class="dice">2d6</span>. Large but risky = <span class="dice">d10</span> or <span class="dice">d20</span>. This is the yield dice.</li>
+    <li><strong>Where does the grey come from?</strong> Burning anything, extracting anything, mass-producing anything. If the activity is net clean — gardening, teaching, performing — no grey. If ambiguous, mark <span class="dice">1d6</span>: on a 1 it pollutes this round.</li>
+  </ol>
+
+  <div class="callout">
+    <div class="callout-label">When in doubt, ask the table</div>
+    <p>"Does a community solar farm feel closer to a shop or a hospital?" &nbsp; "Would you say a barter market produces grey?" &nbsp; The table's consensus is not the truth, but it's a truth the game can run on. Write it down in the master's diary for next time.</p>
+  </div>
+
+  <h2>The first round exception</h2>
+  <p>In round one, each player's <em>starting</em> activity is inherited and pays no construction cost. They do, however, pay operation cost from round one onward. You still set a yield — typically <span class="dice">d6</span> for a modest subsistence activity.</p>
+
+  <h2>Handling "Invent"</h2>
+  <p>When a player picks the Invent action, they're not deploying a ready activity — they're researching something that doesn't yet exist on the board. Process:</p>
+  <ol>
+    <li>Player describes the invention in 30 seconds.</li>
+    <li>Table discusses for 60–90 seconds: is this plausible? What might it cost to research? What could it yield if it worked?</li>
+    <li>You set a <strong>probability of success</strong> (a threshold on <span class="dice">1d20</span> — typically 10–15 for plausible ideas, higher for breakthroughs) and a <strong>research cost</strong> (3–6 whites plus 1–2 greys for lab waste is a fair baseline).</li>
+    <li>Player pays. Rolls. On success, the invention becomes a new element with its own cost/yield/grey, which you write up fresh. On failure, the cost is lost but the knowledge is banked — next attempt gets a +2 bonus.</li>
+  </ol>
+
+  <div class="pagenum">4 / 8</div>
+  <div class="footer">legrandjeu.net</div>
+</div>
+
+<!-- ============================================
+     PAGE 5 · EXAMPLE ACTIVITIES (TABLE)
+============================================ -->
+<div class="page">
+  <div class="run-header">
+    <span class="sec">Running the economy · part 2</span>
+    <svg class="logo-rhombus-mini" width="32" height="17" viewBox="0 0 240 128">
+      <polygon points="60,0 40,34.64 80,34.64"/><polygon points="60,0 100,0 80,34.64"/>
+      <polygon points="100,0 80,34.64 120,34.64"/><polygon points="100,0 140,0 120,34.64"/>
+      <polygon points="140,0 120,34.64 160,34.64"/><polygon points="140,0 180,0 160,34.64"/>
+      <polygon points="180,0 160,34.64 200,34.64"/>
+      <polygon points="40,34.64 20,69.28 60,69.28"/><polygon points="40,34.64 80,34.64 60,69.28"/>
+      <polygon points="80,34.64 60,69.28 100,69.28"/><polygon points="80,34.64 120,34.64 100,69.28"/>
+      <polygon points="120,34.64 100,69.28 140,69.28"/><polygon points="120,34.64 160,34.64 140,69.28"/>
+      <polygon points="160,34.64 140,69.28 180,69.28"/>
+      <polygon points="20,69.28 0,103.92 40,103.92"/><polygon points="20,69.28 60,69.28 40,103.92"/>
+      <polygon points="60,69.28 40,103.92 80,103.92"/><polygon points="60,69.28 100,69.28 80,103.92"/>
+      <polygon points="100,69.28 80,103.92 120,103.92"/><polygon points="100,69.28 140,69.28 120,103.92"/>
+      <polygon points="140,69.28 120,103.92 160,103.92"/>
+    </svg>
+  </div>
+
+  <h1>Example activities</h1>
+
+  <p class="lede">A calibration library. Use these as anchor points when players propose something new. Each entry shows construction cost, operation per round, yield, and what the activity <em>resembles</em> — so a "bike courier" can be statted as "like transports, minus the vehicle overhead, grey drops to ambiguous".</p>
+
+  <div class="cluster-head">Procurement &amp; primary production</div>
+  <table>
+    <thead>
+      <tr><th>Activity</th><th>Build</th><th>Per round</th><th>Yield</th><th>Resembles / differs in</th></tr>
+    </thead>
+    <tbody>
+      <tr><td class="name">Small farm</td><td class="cost-col">1<span class="coin coin-w"></span></td><td class="cost-col">1<span class="coin coin-w"></span></td><td class="dice-col">d6</td><td class="resembles">Gardener with more scale. Orchard resembles, but slower: yield <span class="dice">d6</span> only every 2 rounds.</td></tr>
+      <tr><td class="name">Gardener</td><td class="cost-col">0</td><td class="cost-col">0</td><td class="dice-col">2</td><td class="resembles">Subsistence baseline. Beekeeper similar, add <span class="dice">d4</span> honey yield.</td></tr>
+      <tr><td class="name">Fishing boat</td><td class="cost-col">3<span class="coin coin-w"></span></td><td class="cost-col">1<span class="coin coin-w"></span></td><td class="dice-col">d8</td><td class="resembles">Like small farm but water-based. Add grey on <span class="dice">d10</span>=1 for overfishing.</td></tr>
+      <tr><td class="name">Quarry / mine</td><td class="cost-col">6<span class="coin coin-w"></span></td><td class="cost-col">2<span class="coin coin-w"></span> 1<span class="coin coin-g"></span></td><td class="dice-col">2d6</td><td class="resembles">High yield, reliable grey. Timber logging resembles, with <span class="dice">d8</span> yield.</td></tr>
+      <tr><td class="name">Well / aquifer</td><td class="cost-col">2<span class="coin coin-w"></span></td><td class="cost-col">0</td><td class="dice-col">d4</td><td class="resembles">Infrastructural — serves multiple neighbours. Solar panel resembles for electricity.</td></tr>
+    </tbody>
+  </table>
+
+  <div class="cluster-head">Production &amp; craft</div>
+  <table>
+    <thead>
+      <tr><th>Activity</th><th>Build</th><th>Per round</th><th>Yield</th><th>Resembles / differs in</th></tr>
+    </thead>
+    <tbody>
+      <tr><td class="name">Small shop</td><td class="cost-col">2<span class="coin coin-w"></span></td><td class="cost-col">1<span class="coin coin-w"></span></td><td class="dice-col">d6</td><td class="resembles">Bakery, newsagent, greengrocer all fit here.</td></tr>
+      <tr><td class="name">Packaging workshop</td><td class="cost-col">2<span class="coin coin-w"></span></td><td class="cost-col">2<span class="coin coin-w"></span> 2<span class="coin coin-g"></span></td><td class="dice-col">2d6</td><td class="resembles">High grey (plastics, print). Printing press resembles with lower grey.</td></tr>
+      <tr><td class="name">Food processing</td><td class="cost-col">3<span class="coin coin-w"></span></td><td class="cost-col">3<span class="coin coin-w"></span> 1<span class="coin coin-g"></span></td><td class="dice-col">3d6</td><td class="resembles">Jam factory, cannery, dairy. Resembles brewery; replace grey with water stress.</td></tr>
+      <tr><td class="name">Mechanic workshop</td><td class="cost-col">2<span class="coin coin-w"></span></td><td class="cost-col">2<span class="coin coin-w"></span></td><td class="dice-col">d8</td><td class="resembles">Computer / phone repair resembles. Pollution moves from oil &amp; metal to e-waste; location moves from street to indoor.</td></tr>
+      <tr><td class="name">Artisan craft</td><td class="cost-col">1<span class="coin coin-w"></span></td><td class="cost-col">1<span class="coin coin-w"></span></td><td class="dice-col">d6</td><td class="resembles">Ceramist, weaver, luthier. Low grey, slow scaling.</td></tr>
+      <tr><td class="name">Construction crew</td><td class="cost-col">3<span class="coin coin-w"></span></td><td class="cost-col">2<span class="coin coin-w"></span> 1<span class="coin coin-g"></span></td><td class="dice-col">d8</td><td class="resembles">Builds other people's elements at 50% cost. Demolition crew resembles, yields salvage <span class="dice">d4</span>.</td></tr>
+    </tbody>
+  </table>
+
+  <div class="cluster-head">Services &amp; knowledge (2.0)</div>
+  <table>
+    <thead>
+      <tr><th>Activity</th><th>Build</th><th>Per round</th><th>Yield</th><th>Resembles / differs in</th></tr>
+    </thead>
+    <tbody>
+      <tr><td class="name">Hospital</td><td class="cost-col">6<span class="coin coin-w"></span></td><td class="cost-col">3<span class="coin coin-w"></span></td><td class="dice-col">5 + d20</td><td class="resembles">Public good. On <span class="dice">d20</span> ≤ 3 a crisis consumes an extra 3<span class="coin coin-w"></span> this round. Private clinic resembles but pockets the yield.</td></tr>
+      <tr><td class="name">School</td><td class="cost-col">4<span class="coin coin-w"></span></td><td class="cost-col">2<span class="coin coin-w"></span></td><td class="dice-col">2d6 literacy</td><td class="resembles">Yield is social value, not whites. University resembles with a +3 research bonus to any Invent roll in the bioregion.</td></tr>
+      <tr><td class="name">Festival</td><td class="cost-col">0</td><td class="cost-col">d6<span class="coin coin-w"></span></td><td class="dice-col">d6 ±3</td><td class="resembles">Burns grey (<span class="dice">d6</span> from the atmosphere pot). Enjoy action uses this statline by default.</td></tr>
+      <tr><td class="name">Worker</td><td class="cost-col">0</td><td class="cost-col">0</td><td class="dice-col">d2</td><td class="resembles">A person's labour. Accountant resembles at <span class="dice">d4</span>; business consultant at <span class="dice">d8</span>. Each skill tier is a Learn action.</td></tr>
+      <tr><td class="name">Research centre</td><td class="cost-col">5<span class="coin coin-w"></span></td><td class="cost-col">2<span class="coin coin-w"></span></td><td class="dice-col">d4</td><td class="resembles">Yield is modest whites but grants +30% success rate to any Invent by a connected player.</td></tr>
+      <tr><td class="name">Open-source lab</td><td class="cost-col">3<span class="coin coin-w"></span></td><td class="cost-col">1<span class="coin coin-w"></span></td><td class="dice-col">d4</td><td class="resembles">Like research centre but +20% to everyone, and all inventions are shared — no proprietary advantage.</td></tr>
+      <tr><td class="name">Repair café</td><td class="cost-col">1<span class="coin coin-w"></span></td><td class="cost-col">1<span class="coin coin-w"></span></td><td class="dice-col">d4</td><td class="resembles">Reduces other players' grey by <span class="dice">d4</span> per round. Social value +1 each round it runs.</td></tr>
+    </tbody>
+  </table>
+
+  <div class="cluster-head">Infrastructure &amp; logistics</div>
+  <table>
+    <thead>
+      <tr><th>Activity</th><th>Build</th><th>Per round</th><th>Yield</th><th>Resembles / differs in</th></tr>
+    </thead>
+    <tbody>
+      <tr><td class="name">Transports</td><td class="cost-col">3<span class="coin coin-w"></span></td><td class="cost-col">2<span class="coin coin-w"></span> 1<span class="coin coin-g"></span></td><td class="dice-col">d8</td><td class="resembles">Moves resources between non-adjacent territories. On <span class="dice">d10</span>=1 a breakdown: no yield, +1 grey.</td></tr>
+      <tr><td class="name">Bike courier</td><td class="cost-col">1<span class="coin coin-w"></span></td><td class="cost-col">1<span class="coin coin-w"></span></td><td class="dice-col">d4</td><td class="resembles">Transports minus the vehicle overhead. Range limited to adjacent territories. No grey.</td></tr>
+      <tr><td class="name">Fossil power plant</td><td class="cost-col">8<span class="coin coin-w"></span></td><td class="cost-col">0</td><td class="dice-col">3<span class="coin coin-w"></span> 5<span class="coin coin-g"></span></td><td class="resembles">Feeds the grid. Yields to the local pot, not a single player. Covers 4 triangles. Always-on grey tax.</td></tr>
+      <tr><td class="name">RES microgrid</td><td class="cost-col">6<span class="coin coin-w"></span></td><td class="cost-col">0</td><td class="dice-col">2<span class="coin coin-w"></span> × var</td><td class="resembles">Renewable. Each round spin a variability wheel (0%/50%/100%) for actual yield. No grey.</td></tr>
+    </tbody>
+  </table>
+
+  <div class="cluster-head">Edge cases</div>
+  <table>
+    <thead>
+      <tr><th>Activity</th><th>Build</th><th>Per round</th><th>Yield</th><th>Resembles / differs in</th></tr>
+    </thead>
+    <tbody>
+      <tr><td class="name">Smuggling</td><td class="cost-col">1<span class="coin coin-w"></span></td><td class="cost-col">1<span class="coin coin-w"></span></td><td class="dice-col">d12</td><td class="resembles">High yield. 40% to start; 10% per round of being caught — if caught, the element is destroyed and the player pays a fine of its yield value.</td></tr>
+      <tr><td class="name">Informal settlement</td><td class="cost-col">0</td><td class="cost-col">0</td><td class="dice-col">0</td><td class="resembles">Off-grid shelter. No yield, no tax, no eviction unless an assembly votes it. Social value −1 per round it lacks infrastructure.</td></tr>
+    </tbody>
+  </table>
+
+  <div class="pagenum">5 / 8</div>
+  <div class="footer">legrandjeu.net</div>
+</div>
+
+<!-- ============================================
+     PAGE 6 · FACILITATION CRAFT
+============================================ -->
+<div class="page">
+  <div class="run-header">
+    <span class="sec">Facilitation craft</span>
+    <svg class="logo-rhombus-mini" width="32" height="17" viewBox="0 0 240 128">
+      <polygon points="60,0 40,34.64 80,34.64"/><polygon points="60,0 100,0 80,34.64"/>
+      <polygon points="100,0 80,34.64 120,34.64"/><polygon points="100,0 140,0 120,34.64"/>
+      <polygon points="140,0 120,34.64 160,34.64"/><polygon points="140,0 180,0 160,34.64"/>
+      <polygon points="180,0 160,34.64 200,34.64"/>
+      <polygon points="40,34.64 20,69.28 60,69.28"/><polygon points="40,34.64 80,34.64 60,69.28"/>
+      <polygon points="80,34.64 60,69.28 100,69.28"/><polygon points="80,34.64 120,34.64 100,69.28"/>
+      <polygon points="120,34.64 100,69.28 140,69.28"/><polygon points="120,34.64 160,34.64 140,69.28"/>
+      <polygon points="160,34.64 140,69.28 180,69.28"/>
+      <polygon points="20,69.28 0,103.92 40,103.92"/><polygon points="20,69.28 60,69.28 40,103.92"/>
+      <polygon points="60,69.28 40,103.92 80,103.92"/><polygon points="60,69.28 100,69.28 80,103.92"/>
+      <polygon points="100,69.28 80,103.92 120,103.92"/><polygon points="100,69.28 140,69.28 120,103.92"/>
+      <polygon points="140,69.28 120,103.92 160,103.92"/>
+    </svg>
+  </div>
+
+  <h1>Reading the room</h1>
+
+  <p class="lede">The numbers are a scaffold. The game happens in what players say between rolls — and your job is to make that conversation as productive as possible.</p>
+
+  <h2>Prompting questions</h2>
+  <p>When a player is stuck, don't suggest an activity. Ask a question that opens the space. A small library of prompts, grouped by what's stuck:</p>
+
+  <h3>When someone can't think of what to build</h3>
+  <ul>
+    <li>What did your character do before the game started?</li>
+    <li>What does this bioregion need that no one is providing?</li>
+    <li>Who in your real life does something that could go on this board?</li>
+    <li>What would you build if you had twice the whites?</li>
+  </ul>
+
+  <h3>When the table is too individualistic</h3>
+  <ul>
+    <li>Whose activity depends on yours — directly, even if neither of you noticed?</li>
+    <li>What does this bioregion have that none of you own individually?</li>
+    <li>Is there anything it would be cheaper to build together?</li>
+  </ul>
+
+  <h3>When someone is about to do something destructive</h3>
+  <ul>
+    <li>Who else does this affect?</li>
+    <li>What would the land say if it could?</li>
+    <li>Is this a one-round decision or a permanent one?</li>
+    <li>What would you need to feel ok <em>not</em> doing this?</li>
+  </ul>
+
+  <h2>Spotlight management</h2>
+  <p>Track who has spoken this round. If one player has dominated three actions, on the next round call on the quietest player first — not by embarrassing, but by routing: <em>"You're closest to the river, do you see the spill from your land?"</em> Giving them a concrete detail to respond to is easier than asking for an open contribution.</p>
+
+  <p>If two players start negotiating privately during another player's turn, don't stop them — but loop back: <em>"Hold that thought; we'll come to it after this turn."</em> Assemblies are where private negotiations become public.</p>
+
+  <h2>Pacing</h2>
+  <p>Each round should take 15–20 minutes in a 4-player game. If a round goes over 30, something is stuck — usually a proposal that can't be costed. Break the loop: write any number that feels fair, say "we'll revisit this in debrief", move on.</p>
+
+  <p>The wheel at end of round is a natural energy reset. Make it physical: get up, walk over, spin, return. The small interruption protects against the table getting lost in one player's spiral.</p>
+
+  <h2>When to interrupt, when to let it play</h2>
+  <p>Let bad ideas play. If a player wants to build a plastic-packaging megafactory next to the river, don't argue them out of it — stat it honestly, let the grey hit the table, and watch how the other players respond. The game teaches faster than you can.</p>
+
+  <p>Interrupt only when:</p>
+  <ul>
+    <li>A player is about to violate a rule they didn't know existed (surprise "gotcha" is cruel).</li>
+    <li>The activity needs a crucial calibration check with the table (don't decide alone on a player's career-ending invention).</li>
+    <li>Someone at the table has gone visibly quiet in a way that suggests discomfort, not disengagement.</li>
+  </ul>
+
+  <div class="callout">
+    <div class="callout-label">A tell worth learning</div>
+    <p>When a player starts explaining their idea in <em>legal</em> language — "am I <em>allowed</em> to?", "does the rule say I can?" — the game has drifted from improv to arbitration. Redirect: <em>"Tell me what you want to do, not whether you can."</em> The rules are for resolving outcomes, not for requesting permission.</p>
+  </div>
+
+  <div class="pagenum">6 / 8</div>
+  <div class="footer">legrandjeu.net</div>
+</div>
+
+<!-- ============================================
+     PAGE 7 · EVENTS, CRISIS, DEBRIEF
+============================================ -->
+<div class="page">
+  <div class="run-header">
+    <span class="sec">Events, crisis &amp; after</span>
+    <svg class="logo-rhombus-mini" width="32" height="17" viewBox="0 0 240 128">
+      <polygon points="60,0 40,34.64 80,34.64"/><polygon points="60,0 100,0 80,34.64"/>
+      <polygon points="100,0 80,34.64 120,34.64"/><polygon points="100,0 140,0 120,34.64"/>
+      <polygon points="140,0 120,34.64 160,34.64"/><polygon points="140,0 180,0 160,34.64"/>
+      <polygon points="180,0 160,34.64 200,34.64"/>
+      <polygon points="40,34.64 20,69.28 60,69.28"/><polygon points="40,34.64 80,34.64 60,69.28"/>
+      <polygon points="80,34.64 60,69.28 100,69.28"/><polygon points="80,34.64 120,34.64 100,69.28"/>
+      <polygon points="120,34.64 100,69.28 140,69.28"/><polygon points="120,34.64 160,34.64 140,69.28"/>
+      <polygon points="160,34.64 140,69.28 180,69.28"/>
+      <polygon points="20,69.28 0,103.92 40,103.92"/><polygon points="20,69.28 60,69.28 40,103.92"/>
+      <polygon points="60,69.28 40,103.92 80,103.92"/><polygon points="60,69.28 100,69.28 80,103.92"/>
+      <polygon points="100,69.28 80,103.92 120,103.92"/><polygon points="100,69.28 140,69.28 120,103.92"/>
+      <polygon points="140,69.28 120,103.92 160,103.92"/>
+    </svg>
+  </div>
+
+  <h1>The wheel, the ceiling, the debrief</h1>
+
+  <h2>Reading events aloud</h2>
+  <p>When the wheel lands on an LGJ or Fortune sector, don't read the card flatly. Read the title, pause, ask one player to describe what that would look like on this bioregion, <em>then</em> apply the mechanical effect. The card is a prompt, not a verdict.</p>
+
+  <p>For Invent and Destroy sectors, no card is drawn. You narrate an event that feels native to this scenario — a failed harvest, a rumour of a new technology, a fire in the next valley. Keep it short (30 seconds), let the table decide who is affected and how.</p>
+
+  <h2>Modelling fire, pollution, crisis</h2>
+  <p>Some events cascade. A pattern that works:</p>
+  <ul>
+    <li><strong>Fire</strong> — spin the wheel for wind direction. Downwind triangles roll <span class="dice">d6</span>: on 1–2 they ignite next round. An ignited triangle loses whatever is built on it. Put it out by surrounding it with whites (1 white per adjacent triangle).</li>
+    <li><strong>Pollution plume</strong> — when grey in a region exceeds 10, adjacent territories lose <span class="dice">d4</span> yield until it clears. Clears only by collective action.</li>
+    <li><strong>Epidemic</strong> — each player rolls <span class="dice">d10</span>; on 1–3 loses <span class="dice">d4</span> whites (productivity, healthcare costs). A hospital on the grid halves the damage.</li>
+  </ul>
+
+  <h2>When grey approaches 50</h2>
+  <p>Don't hide the ecological ceiling from players. Announce it at 30, 40, 45. At 48, the table should be visibly nervous. If grey hits 50, end the game in narrative: describe the collapse, then stop.</p>
+
+  <p>A good session often <em>does</em> hit the ceiling. Don't treat this as a failure to prevent — it's the game doing its job.</p>
+
+  <h2>When a player is about to die</h2>
+  <p>If someone's about to run out of whites, let them know one round ahead: <em>"If you don't earn 2 whites next round, your character is out."</em> This is not saving them — it's giving them the chance to ask for help, call an assembly, or go off-grid. Elimination should never be a surprise.</p>
+
+  <p>If they do die: 5 grey per remaining round into the atmosphere pot. Narrate what they lose and what the bioregion loses with them. Invite them to stay as narrator / observer for the rest of the session.</p>
+
+  <h2>After the game: 15 minutes of debrief</h2>
+  <p>Every session gets at least a short debrief. Ask, in order:</p>
+  <ol>
+    <li>What did you build that you were proud of?</li>
+    <li>What did the group get right? What did it miss?</li>
+    <li>Did the wheel events feel real, contrived, or arbitrary?</li>
+    <li>If we played this scenario again tomorrow, what would we do differently?</li>
+    <li>What did this session tell you about the actual question the scenario asked?</li>
+  </ol>
+
+  <p>Write the answers in the master's diary — both for next session, and because each table's answers reveal something the rules can't capture.</p>
+
+  <div class="callout">
+    <div class="callout-label">For workshops and research</div>
+    <p>If this session is part of a research or documentation context (see the SPES protocol), record the debrief with consent, photograph the final board state, note every custom rule invented at the table. These are the artefacts that make workshops reusable.</p>
+  </div>
+
+  <div class="pagenum">7 / 8</div>
+  <div class="footer">legrandjeu.net</div>
+</div>
+
+<!-- ============================================
+     PAGE 8 · CHEATSHEET (fold-out reference)
+============================================ -->
+<div class="page">
+  <div class="run-header">
+    <span class="sec">GM Cheatsheet · keep in front of you during play</span>
+    <svg class="logo-rhombus-mini" width="32" height="17" viewBox="0 0 240 128">
+      <polygon points="60,0 40,34.64 80,34.64"/><polygon points="60,0 100,0 80,34.64"/>
+      <polygon points="100,0 80,34.64 120,34.64"/><polygon points="100,0 140,0 120,34.64"/>
+      <polygon points="140,0 120,34.64 160,34.64"/><polygon points="140,0 180,0 160,34.64"/>
+      <polygon points="180,0 160,34.64 200,34.64"/>
+      <polygon points="40,34.64 20,69.28 60,69.28"/><polygon points="40,34.64 80,34.64 60,69.28"/>
+      <polygon points="80,34.64 60,69.28 100,69.28"/><polygon points="80,34.64 120,34.64 100,69.28"/>
+      <polygon points="120,34.64 100,69.28 140,69.28"/><polygon points="120,34.64 160,34.64 140,69.28"/>
+      <polygon points="160,34.64 140,69.28 180,69.28"/>
+      <polygon points="20,69.28 0,103.92 40,103.92"/><polygon points="20,69.28 60,69.28 40,103.92"/>
+      <polygon points="60,69.28 40,103.92 80,103.92"/><polygon points="60,69.28 100,69.28 80,103.92"/>
+      <polygon points="100,69.28 80,103.92 120,103.92"/><polygon points="100,69.28 140,69.28 120,103.92"/>
+      <polygon points="140,69.28 120,103.92 160,103.92"/>
+    </svg>
+  </div>
+
+  <div class="mantra">
+    <strong>The Golden Rule</strong>
+    "Yes, and how?"
+  </div>
+
+  <div class="cheat-grid">
+    <div class="cheat-cell">
+
+      <h2>Round flow</h2>
+      <ol class="cheat-list">
+        <li><strong>Pay tax</strong> — on-grid players: 1<span class="coin coin-w"></span> to local pot.</li>
+        <li><strong>Each player acts</strong> — one of: Develop, Invent, Assembly, Learn, Enjoy.</li>
+        <li><strong>Spin the wheel</strong> — LGJ / Fortune / Invent / Destroy.</li>
+        <li><strong>Resolve event</strong>, move tokens visibly.</li>
+        <li><strong>Check ceilings</strong>: grey ≥ 50 ends the game.</li>
+      </ol>
+
+      <h2>Action quick-ref</h2>
+      <table class="cheat-table">
+        <thead><tr><th>Action</th><th>Roll</th><th>Notes</th></tr></thead>
+        <tbody>
+          <tr><td class="name">Develop</td><td class="dice-col">1d10</td><td>GM sets cost &amp; yield for the proposed venture.</td></tr>
+          <tr><td class="name">Invent</td><td class="dice-col">1d20</td><td>Pay 3–6<span class="coin coin-w"></span> + 1–2<span class="coin coin-g"></span>. Success ≥ 10–15.</td></tr>
+          <tr><td class="name">Assembly</td><td class="dice-col">vote</td><td>Majority or consensus per coin flip at setup.</td></tr>
+          <tr><td class="name">Learn</td><td class="dice-col">pay</td><td>GM sets cost of the skill/knowledge.</td></tr>
+          <tr><td class="name">Enjoy</td><td class="dice-col">d6 ±3</td><td>Burns grey. Social value +1.</td></tr>
+        </tbody>
+      </table>
+
+      <h2>Calibration anchors</h2>
+      <table class="cheat-table">
+        <thead><tr><th>Scale</th><th>Build</th><th>Yield</th></tr></thead>
+        <tbody>
+          <tr><td class="name">Hand craft</td><td>0–2<span class="coin coin-w"></span></td><td class="dice-col">d4</td></tr>
+          <tr><td class="name">Small shop</td><td>2–4<span class="coin coin-w"></span></td><td class="dice-col">d6</td></tr>
+          <tr><td class="name">Factory / clinic</td><td>6–12<span class="coin coin-w"></span></td><td class="dice-col">2d6 / d10</td></tr>
+          <tr><td class="name">Infrastructure</td><td>15+<span class="coin coin-w"></span></td><td class="dice-col">d12 / d20</td></tr>
+        </tbody>
+      </table>
+
+      <h2>The three dials</h2>
+      <ul class="cheat-list">
+        <li><strong>Stress</strong> — challenged ↔ empowered. Intervene if frustrated 2 rounds.</li>
+        <li><strong>Artist's block</strong> — open ↔ structured. Offer example, or demand a cost.</li>
+        <li><strong>Engagement</strong> — participation ↔ tempo. Every player speaks per round.</li>
+      </ul>
+
+    </div>
+    <div class="cheat-cell">
+
+      <h2>Setup checklist</h2>
+      <ul class="check-list">
+        <li>Scenario chosen &amp; briefed (2 min)</li>
+        <li>Currencies introduced physically</li>
+        <li>Coin flipped: majority or consensus?</li>
+        <li>Wheel tuned to scenario</li>
+        <li>Each player: 1d6 territory, 2d6<span class="coin coin-w"></span>, 1d6<span class="coin coin-g"></span></li>
+        <li>Starting activity named &amp; statted</li>
+        <li>Two pots (local + atmosphere) placed visibly</li>
+        <li>Victory rule held until first player asks</li>
+      </ul>
+
+      <h2>Ceilings &amp; endings</h2>
+      <ul class="cheat-list">
+        <li><strong>Grey ≥ 50</strong> → ecological collapse. Game ends.</li>
+        <li><strong>Player out of whites</strong> → eliminated. +5<span class="coin coin-g"></span> per remaining round.</li>
+        <li><strong>Agreed rounds reached</strong> (usually 5–8).</li>
+        <li><strong>Time up</strong> (1.5–2 hours).</li>
+      </ul>
+
+      <h2>Wheel sectors (default)</h2>
+      <ul class="cheat-list">
+        <li><strong>LGJ 50%</strong> — collective card, affects all.</li>
+        <li><strong>Fortune 20%</strong> — personal card, one player.</li>
+        <li><strong>Invent 15%</strong> — GM narrates a new possibility.</li>
+        <li><strong>Destroy 15%</strong> — GM narrates a loss or setback.</li>
+      </ul>
+
+      <h2>Victory options</h2>
+      <ul class="cheat-list">
+        <li><strong>A · Individual</strong> — highest (<span class="coin coin-w"></span> − <span class="coin coin-g"></span>) wins.</li>
+        <li><strong>B · Collective</strong> — survive ceiling, no one eliminated.</li>
+        <li><strong>C · Tournament</strong> — table with least total grey wins.</li>
+      </ul>
+
+      <h2>Prompts when stuck</h2>
+      <ul class="cheat-list">
+        <li>What does this bioregion need that no one is providing?</li>
+        <li>Whose activity depends on yours?</li>
+        <li>Who else does this affect?</li>
+        <li>What would the land say if it could?</li>
+        <li>Cost more or less than a shop? Than a hospital?</li>
+      </ul>
+
+      <h2>Do &amp; don't</h2>
+      <ul class="cheat-list">
+        <li><strong>Do</strong> move tokens physically, always.</li>
+        <li><strong>Do</strong> ask the table when you're unsure.</li>
+        <li><strong>Do</strong> announce the ceiling as it approaches.</li>
+        <li><strong>Don't</strong> argue players out of bad ideas — stat them honestly.</li>
+        <li><strong>Don't</strong> surprise-eliminate a player.</li>
+        <li><strong>Don't</strong> reveal victory until asked.</li>
+      </ul>
+
+    </div>
+  </div>
+
+  <div class="credit">
+    Le Grand Jeu — originally designed by Federico Bonelli &amp; Raffaella Rovida · Milan, July 2016<br>
+    © 2016–2026 · Licensed under Creative Commons Attribution–NonCommercial–ShareAlike 4.0 International<br>
+    legrandjeu.net &nbsp;·&nbsp; @legrandjeu11 &nbsp;·&nbsp; fredd@trasformatorio.net
+  </div>
+
+  <div class="pagenum">8 / 8</div>
+</div>

@@ -8,6 +8,7 @@ future-thinking game co-designed by Federico Bonelli and Raffaella Rovida.
 ## Contents
 
 - `rulebook/quickstart-en.html` — 4-page A4 print-ready quick-start rules
+- `manual/gm-manual-en.html` — 8-page A4 GM manual, with fold-out cheatsheet
 
 ## Printing
 
