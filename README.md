@@ -9,6 +9,8 @@ future-thinking game co-designed by Federico Bonelli and Raffaella Rovida.
 
 - `rulebook/quickstart-en.html` — 4-page A4 print-ready quick-start rules
 - `manual/gm-manual-en.html` — 8-page A4 GM manual, with fold-out cheatsheet
+- `player-cards/dashboard-en.html` — 6 per-player A5 reference cards, duplex, 3 × A4 (red/blue/green/yellow/purple/teal)
+-  `event-cards/decks-en.html` — 4 × A3 print sheets, 16 cards per sheet (LGJ collective + Fortune personal decks)
 
 ## Printing
 
