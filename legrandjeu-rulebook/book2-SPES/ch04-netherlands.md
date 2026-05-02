@@ -1,0 +1,160 @@
+---
+chapter: IV
+title: Netherlands — Amsterdam
+short_title: Amsterdam
+book: 2
+status: draft
+notes_for_conversion: |
+  Longest chapter in Book 2 (~3500 words). Structured as: overview, one
+  preview session, four main sessions, cross-session synthesis, reflection.
+  Uses pull-quotes from Highlights_Amsterdam.md (player voice) and from
+  the buurthuijs transcription (SPEAKER_08, which is Federico).
+  Multiple image slots — at least one per major session if photos exist.
+---
+
+# Chapter IV · Netherlands — Amsterdam
+
+|                          |                                                                                     |
+|--------------------------|-------------------------------------------------------------------------------------|
+| **Number of sessions**   | Four workshops (plus one student preview)                                            |
+| **Dates**                | 13, 23, 27 February 2025; Buurthuijs Belgie session following                        |
+| **Locations**            | University of Amsterdam (twice), MKZ Café (Overtoomse Veld), Buurtcentrum Belgie (Osdorp) |
+| **Total participants**   | ~22 across the four main sessions                                                    |
+| **Game Masters**         | Meg, Ines, Federico, and one volunteer master drawn from a student group             |
+| **Group composition**    | Students, academics, artists, health and media professionals, senior citizens, migrants, neighbourhood residents |
+| **Languages**            | English, Dutch, mix                                                                  |
+| **Documentation**        | Audio, video (partial), photographs, field notes                                     |
+
+## I. Four tables in one city
+
+Amsterdam produced more SPES material than any other country. Four workshops were run over roughly six weeks, supplemented by a university-based preview session the weekend before the official programme began. The sessions were deliberately heterogeneous — in location, in the mix of participants, and in the style of the game masters — and the resulting record is the richest single body of gameplay from any SPES country. It is also the body of material from which the project's cross-cutting analytical frame, the "aspirations / problems / policy solutions" triad used across all seven countries, was most fully tested.
+
+This chapter handles the five Amsterdam sessions in the order they happened. Each is described briefly in its own right; a cross-session synthesis follows at §VI.
+
+## II. The student preview — 13 February, University of Amsterdam
+
+The first table played in Amsterdam was a preview: a group of master's students, approached in class with two readings beforehand, who gathered on a Thursday afternoon at the university. The session was split across three tables to accommodate the numbers. Meg mastered one; two volunteers chosen from the student group mastered the others. Play ran from 14:30 to 17:00, followed by informal conversation at a bar.
+
+The preview was not a formal workshop, but several patterns that recurred in the later sessions first appeared here. One table noticed their players clustering around concerns about the grey beans — the externalities — from before the game even started, suggesting that the Dutch participants had internalised the ecological framing and were prepared to take it seriously. The table built a mixed society — organic potato farm, local bar, affordable apartments, national park, windmill — with investments consistently justified in terms of *societal* contribution rather than personal gain. The group that emerged at the end was proudly green but lacked any mechanism for reducing externalities already in the pot, a frustration the later sessions would revisit repeatedly.
+
+One small observation, recorded in the field notes, is worth keeping: *students had crossed paths in class but hardly spoken to each other before the session, and the game became the first place they did.* The Amsterdam workshops would, across their four formal iterations, keep doing this.
+
+## III. Session 1 — MKZ Café, 23 February
+
+The first formal session was held at MKZ Café in the Eerste Schinkelstraat, a community kitchen that hosts a board-game night every week. The research team went to the board-game night and recruited six players on the spot: three women and three men, ages roughly from teenage years into the forties, a mix of students and academics, some Dutch-speaking, some English-speaking, one mixed couple raising children in Amsterdam. Play lasted two hours; individual follow-up interviews filled the third.
+
+The session produced one of the cleanest arcs of the whole Amsterdam programme. In round one, five players set up in parallel — a permaculture farm off-grid (rolled a 40, not yet operational), a competing on-grid farm, a wheat and apple farm, a bakery that succeeded brilliantly, a vegetable farm. Cautious competition, not collaboration. In round two, the permaculture farmer added solar panels (subsidised by the government after a successful roll); another player pivoted the group toward composting as a way to cut externalities; a communication tower was built to connect the grid and the off-grid.
+
+Round three introduced the event rule, and the dice delivered a disaster: **a fire at the permaculture farm caused by faulty solar wiring.** Five points of grey beans were added to the pot. The mood changed instantly. In the same round, the group introduced two laws — one to redistribute wealth between the richest and poorest player at the end of each turn, one to mandate everyone to attend a party at the end of each cycle because, as the proposer argued, *"bad vibes also count as pollution."* Both passed unanimously.
+
+> *"It just feels fair that way."*
+>
+> — MKZ Café player, on the wealth-redistribution law
+
+By the end of round four, the common pot of externalities was approaching the threshold of societal collapse (48 out of a maximum of 50). The group tried several responses — one player proposed shipping waste into space (rejected, strongly, as avoidance rather than solution), another proposed a research centre to find new waste-management techniques, a third shifted their brewery to a zero-waste process. As a final measure, the group voted to bury waste in a pit — unenthusiastically, knowing the decision was not a solution but a holding pattern.
+
+> *"That's not sustainable — that's denial!"*
+>
+> — MKZ Café player, on the space-shipping proposal
+
+The MKZ session's most striking feature was the group's moral clarity about what counted as a sustainable solution. Magical thinking — shipping waste to space, outsourcing the problem — was rejected forcefully. Real circular-economy mechanisms — composting, zero-waste brewing, redistribution — were embraced. The group was not large, but it was unusually decisive, and its decisions held the game together.
+
+## IV. Sessions 2 and 3 — University of Amsterdam, 27 February
+
+The UvA workshop filled a room in the Bijzondere Collecties building for three hours on a Thursday afternoon. Twelve participants arrived — students, artists, academics, several senior citizens, one participant's elderly parent. The group was split across two tables running in parallel, each master-led: Meg on one, Ines on the other. A common post-game discussion brought the two tables back together at the end.
+
+### Session 2 — Meg's table
+
+Meg's table had five players: four women, two men, ages from thirties to sixties, a demographically older group than MKZ. Before the game began, the players stopped to ask a question the other sessions had not explicitly posed: *"Is there already pollution in the city at the start?"* The group deliberated, and decided they would play an already-affluent society that had inherited a polluted environment and needed to clean it up. This framing shaped the entire session.
+
+In round one, one player founded a community centre where children would learn to coexist with nature; another opened a public school where learning would serve *collective* rather than *individual* good; a third opened a food bank in the city. Round two was interrupted by an event card: **a death cult had emerged in the community.** Rather than suppress it, the group went into business with the cult, proposing to use human ashes to regenerate the desolate soil at the edge of town — an early and unexpectedly elegant move toward circular thinking. A second event card placed a mega-shopping-centre at the town border. The group accepted it reluctantly, acknowledging the trade-off between the happiness it would bring and the pollution it would produce.
+
+By round three, the session's tone had settled. A bike-share cooperative, a bicycle repair shop where children could learn mechanical skills, a social kitchen attached to the food bank — all passed with broad support. The discussion kept returning to a shared, almost unstated premise: *small inclusive infrastructure was the right unit of intervention.*
+
+### Session 3 — Ines's table
+
+Ines's table had seven players: three women, four men, ages from twenties to sixties, a more mixed demographic with more novice gamers. One of the players — who volunteered to master the game in a turn-taking arrangement — set a markedly fair and transparent tone that the table remarked on repeatedly afterwards.
+
+In round one, one player played *a Dutch man* directly — a dairy farmer living off-grid to avoid taxes, which the dice rolled as successful (70%). Another played themselves: a talented neuroscience student (100%). A herb farmer settled in the countryside (100%). A town bar opened for after-work decompression (70%). A hospital failed its first roll (60%) and entered the round with patients dying in the ER — a consequence the group would spend two rounds correcting.
+
+In round two, a migrant arrived at the table — a new player who joined partway through the game, with less starting land than the others. Asked by the table what they wanted to do, the migrant player **asked the town what was needed**, and after discussion built a factory on the city's edge to provide means of production the town was missing. The placement was deliberate: at the edge, so the pollution would stay away from the centre. This moment — a migrant asking what the host community needed rather than announcing what they wanted — was one of the session's most striking, and it was resolved without friction.
+
+Round three delivered a **global blackout**. The group calmly catalogued what they had — a farm with its own energy, a hospital whose patients were now in critical danger — and the migrant player built an energy grid linking the two. A windmill was added to reduce dependence on a single energy source; a hydro-option was considered and rejected on ecological grounds. When one player proposed building a space centre and shipping waste to space, the group pushed back hard, as the MKZ group had. The idea was dropped.
+
+One law was proposed — mandatory community volunteering to support farms and nature reserves — and rejected by most of the table as *"modern day slavery."* The compromise was to allow the farmer to recruit volunteers on a voluntary basis. The table's appetite for rules, it turned out, was limited; consent and voluntariness were non-negotiable.
+
+### The joint debrief
+
+Both tables were brought together at the end of the afternoon to present their societies to each other. Meg's group gave themselves **2.5 out of 3** on the social-impact scale; Ines's group did the same. Each argued their scoring with the other's scoring in mind, and the patterns that emerged from the comparison are recorded in the cross-session synthesis below (§VI).
+
+What emerged most clearly was a reflection on why the sessions had felt more constructive than real-world politics:
+
+> *"We knew exactly how much pollution was being generated, how much money was being accumulated, and we were collectively looking at what we can do. There were no secret numbers and there was no suspicion that grew against others."*
+>
+> — UvA player, joint debrief
+
+**Radical transparency** — being able to see the state of the shared environment, being able to see what others held — was identified, across both tables, as the single most important enabling condition. The players did not argue that radical transparency was easy to replicate in real life. They argued that its absence was the reason their real communities felt less solvable than their imagined one.
+
+## V. Session 4 — Buurthuijs Belgie, Osdorp
+
+The fourth session was held at the Buurtcentrum Belgie in Osdorp, a mixed neighbourhood on Amsterdam's western periphery. This was the first Dutch session mastered by Federico, and the first played substantially in a mix of Dutch and English. The four players — an elderly citizen, a younger woman, a student, and a woman in her thirties who volunteered at the centre — had been recruited via a flyer and word of mouth directly at the buurtcentrum.
+
+> *"So it's all that: we do the big politics and we play our small politics. We try to have a way to live that is sustainable."*
+>
+> — Federico, opening the session
+
+The Buurthuijs session differed from the university-based sessions in two obvious ways. The players were not particularly familiar with policy language, and the session ran more in storytelling mode than in policy-analysis mode. The GM spent longer on setup — roughly eleven minutes explaining the game — and the players took longer to find their feet. Once they did, the session played as strongly as any of the others.
+
+In round one, the elderly player started a **common vegetable garden** (dice rolled 40, still in development); one player built a **star observatory** (70, success); another proposed a **cultural centre in the city** (70 for idea, but the dice on the city council's response came back as "yes in principle, no in funding" — an on-the-fly improvisation by the GM that the table enjoyed); the fourth planned a **garden market selling farm products to the neighbourhood** (dice rolled 10 — the GM ruled the market hit a regulatory dead-end, stuck in administrative limbo).
+
+In round two, the entropy rule was introduced: fifty grey beans triggers societal collapse. One player pushed forward the vegetable market but was blocked again by missing regulation. Another tried for a bridge — rolled low, and the GM ruled the player could instead *plea the city* for the bridge. The group then debated bridge vs. boat (*"a bridge is forever, a boat won't last"*), settled on a low-impact bridge proposal with a successful roll, and named it **"the people's bridge,"** tolls explicitly refused. Another player built a canal from the river to the gardens with a spectacularly low cost-per-triangle; the table remarked, amused, that the bridge and canal had made their imagined city *"much more like Amsterdam."* The fourth player built a garden house (90% — the highest roll of the session) for neighbourhood parties and children's birthdays.
+
+By round three, the questions had shifted. *"What is the scope of the game?"* one player asked. Federico explained: the game is a way to talk about the future — to account for pollution, to think about infrastructure, to practise direct democracy in simple form. Another player asked whether the game could be purchased. The answer, with some regret, was no — but it could be downloaded and made at home. The players declined Federico's offer to hand the mastering over to one of them and asked him to keep mastering to the end.
+
+Late in the session, midway through a conversation about policy actors, Federico offered a reflection that the transcription caught verbatim:
+
+> *"Every big game player is also a small game player. He has to live somewhere, he has to do his groceries, or send somebody to do his groceries as well."*
+>
+> — Federico, Buurthuijs Belgie, 02:37
+
+The remark was not planned. It emerged from the conversation. Buurthuijs Belgie was, in many ways, the session in which the big-game / small-game framing that opens this book stopped being a theoretical device and became a lived argument.
+
+## VI. What Amsterdam surfaced
+
+Across the four sessions and the preview, a set of patterns recurred clearly enough to warrant cross-session naming. We have borrowed the structure of the "aspirations / problems / policy solutions" triad used in the SPES analysis.
+
+**Aspirations — desirable futures and collective goals**
+
+- **A green(er) society.** Every table expressed this as the baseline goal, though with different emphases: off-grid self-sufficiency for some, well-governed public infrastructure for others, circular-economy thinking for almost all.
+- **Minimising new pollution proved easier than reducing existing pollution.** Every session introduced circular or preventive mechanisms — composting, zero-waste brewing, research centres, recycling — more readily than mechanisms for cleaning up what was already in the pot.
+- **A preference for public and mixed public-private infrastructure, locally managed.** Bridges, canals, schools, food banks, bike shares, grids — most things that mattered were built with public money and governed collectively, with only occasional dissent.
+- **Aesthetic and affective considerations counted as infrastructure.** Flower gardens, community centres, parties, and "good vibes" were proposed and legislated as parts of what makes a society liveable — not as decorative add-ons.
+
+**Problems — barriers to the transition**
+
+- **Dealing with already-existing externalities.** Every session struggled with how to reduce grey beans that were already in the pot. Magical-thinking solutions (space, hiding, burial) appeared every time and were rejected every time as denial, but no session found a fully satisfying real-world answer.
+- **Information asymmetry and invisibility.** The joint UvA debrief named this most clearly: the game was solvable because everyone could see the numbers, and real life is less solvable because no one can.
+- **The limits of rules.** Every session that tried to pass a mandatory law — volunteering, attendance, redistribution — ran into principled resistance that could only be resolved by making the rule voluntary or building in consent.
+
+**Policy priorities and ideas**
+
+- **Strong preference for consensus over majority rule.** Assemblies that required unanimity produced better outcomes than those decided by majority vote. This was visible at MKZ (both big laws passed unanimously), at both UvA tables, and at the Buurthuijs.
+- **A local, trusted facilitator was consistently requested.** In every session, the GM role was described, after the fact, as crucial — not as a referee but as a rational modeller of consequences. Players wanted someone who could translate their decisions back into clear, trackable effects on the shared environment.
+- **Metrics that citizens can understand.** Grey beans, white beans, a visible threshold — these simple metrics outperformed every abstract policy category the players could name. The repeated request across sessions was for real-world analogues: understandable, trackable, shared.
+- **Knowledge infrastructure as public infrastructure.** Schools, research centres, libraries of objects, cultural centres, repair workshops — these came up in every session and were consistently voted for with public money.
+
+## VII. Reflection
+
+Four sessions across four weeks in four different parts of Amsterdam produced four different games. The MKZ group was decisive and morally clear; the UvA tables were reflective and transparent in a way that made the post-game debrief unusually productive; the Buurthuijs group was slower to start and arrived, by the end, at some of the most direct observations of the whole SPES programme.
+
+What unites them is not a single Dutch perspective on the sustainability transition. It is a set of **enabling conditions** that Dutch players named, again and again, as the precondition for any real collective action. Radical transparency. Consensus. A trusted facilitator. Metrics that citizens can read. Public and mixed infrastructure over private extraction. Small inclusive institutions over monumental ones. Voluntariness rather than coercion, even when coercion would produce a faster result.
+
+None of these enabling conditions is specifically Dutch. All of them are specifically *absent*, in various ways, from the policy environments the participants live in. The sessions did not just model a better future — they modelled the institutional infrastructure a better future would require, and named the places where current institutions fall short.
+
+That naming, more than the content of any individual decision, is what Amsterdam contributed to SPES.
+
+[IMAGE: mkz-table.png — *The MKZ Café session. Five players around a board showing the permaculture farm, the wheat and apple farm, and the early bakery.* Source: original session photograph.]
+
+[IMAGE: uva-two-tables.png — *The UvA joint debrief, with Meg's and Ines's tables brought together to present their societies to each other.* Source: original session photograph.]
+
+[IMAGE: buurthuijs-setup.png — *The buurthuijs Belgie table mid-game, with the people's bridge and the canal both visible on the boards.* Source: original session photograph.]

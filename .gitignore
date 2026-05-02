@@ -12,3 +12,9 @@ Thumbs.db
 *.pdf
 /dist/
 /tmp/
+
+# Source archive files (large originals, not for repo)
+*.zip
+
+#Python virtual env
+.venv/
