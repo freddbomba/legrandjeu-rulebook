@@ -1,0 +1,622 @@
+<style>
+@page { size: A3; margin: 0; }
+@media print {
+  body { margin: 0; padding: 0; background: white; }
+  .sheet { page-break-after: always; page-break-inside: avoid; box-shadow: none; margin: 0; }
+  .sheet:last-child { page-break-after: auto; }
+}
+@media screen {
+  body { background: #e8e4dc; padding: 20px 10px; }
+  .sheet { box-shadow: 0 2px 14px rgba(0,0,0,0.18); margin: 0 auto 20px; }
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --ink: #111;
+  --mid: #555;
+  --dim: #8a8a86;
+  --rule: #d0ccc5;
+  --soft: #faf8f4;
+  --back-grey: #e6e2d8;
+  --back-grey-stroke: #9e9a90;
+}
+
+body {
+  font-family: Georgia, 'Times New Roman', serif;
+  color: var(--ink);
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+/* === A3 Sheet (297 × 420 mm) === */
+.sheet {
+  width: 297mm;
+  min-height: 420mm;
+  background: white;
+  position: relative;
+  padding: 14mm 12mm;
+}
+
+.sheet-label {
+  position: absolute;
+  top: 4mm;
+  left: 6mm;
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 7pt;
+  color: var(--dim);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.print-note {
+  position: absolute;
+  top: 4mm;
+  right: 6mm;
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 7pt;
+  color: var(--dim);
+  letter-spacing: 0.5px;
+  font-style: italic;
+}
+
+/* === Card grid (4 × 4 = 16 cards) === */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 63mm);
+  grid-template-rows: repeat(4, 88mm);
+  gap: 3mm;
+  justify-content: center;
+}
+
+/* === Individual card === */
+.card {
+  width: 63mm;
+  height: 88mm;
+  border: 0.5pt dashed var(--dim);
+  padding: 4mm 4.5mm 3.5mm;
+  position: relative;
+  overflow: hidden;
+  background: white;
+  display: flex;
+  flex-direction: column;
+}
+
+.card-num {
+  position: absolute;
+  top: 2mm;
+  left: 3mm;
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 6.5pt;
+  color: var(--dim);
+  letter-spacing: 1px;
+}
+
+.card-kind {
+  position: absolute;
+  top: 2mm;
+  right: 3mm;
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 6pt;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--mid);
+}
+
+.card-title {
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 10.5pt;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.2px;
+  margin-top: 5mm;
+  margin-bottom: 2.5mm;
+  padding-bottom: 2mm;
+  border-bottom: 1.5px solid var(--ink);
+  min-height: 11mm;
+}
+
+.card-body {
+  font-size: 8.2pt;
+  line-height: 1.45;
+  flex: 1;
+}
+
+.card-social {
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 6.8pt;
+  line-height: 1.4;
+  color: var(--mid);
+  font-style: italic;
+  padding-top: 2mm;
+  margin-top: 2mm;
+  border-top: 1px solid var(--rule);
+}
+
+.card-blank .card-title {
+  font-style: italic;
+  color: var(--dim);
+  font-weight: 400;
+  border-bottom: 1.5px dashed var(--dim);
+}
+.card-blank .card-body {
+  color: var(--dim);
+  font-style: italic;
+  font-size: 7.5pt;
+}
+
+/* === Card backs === */
+.card-back {
+  width: 63mm;
+  height: 88mm;
+  border: 0.5pt dashed var(--dim);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* LGJ back: subtle grey pattern of rhombi + wordmark */
+.card-back-lgj {
+  background:
+    repeating-linear-gradient(
+      60deg,
+      transparent 0 12mm,
+      rgba(158,154,144,0.12) 12mm 12.5mm
+    ),
+    repeating-linear-gradient(
+      -60deg,
+      transparent 0 12mm,
+      rgba(158,154,144,0.12) 12mm 12.5mm
+    ),
+    var(--back-grey);
+}
+
+.card-back-lgj-inner {
+  background: white;
+  padding: 4mm 5mm;
+  border: 1.5px solid var(--ink);
+  text-align: center;
+}
+.card-back-lgj-inner .wordmark {
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 11pt;
+  font-weight: 300;
+  letter-spacing: -0.2px;
+  color: var(--ink);
+  white-space: nowrap;
+}
+.card-back-lgj-inner .wordmark-sub {
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 6.2pt;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--mid);
+  margin-top: 1.5mm;
+}
+
+/* Event back: clean monochrome */
+.card-back-event {
+  background: white;
+}
+.card-back-event-inner {
+  text-align: center;
+}
+.card-back-event-inner .event-word {
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 18pt;
+  font-weight: 300;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+.card-back-event-inner .event-sub {
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 6.5pt;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--mid);
+  margin-top: 2mm;
+}
+.card-back-event-inner .event-rule {
+  width: 20mm;
+  height: 1px;
+  background: var(--ink);
+  margin: 3mm auto;
+}
+
+/* Logo in corners of back */
+.back-corner-logo {
+  position: absolute;
+  width: 9mm;
+  opacity: 0.5;
+}
+.back-corner-tl { top: 3mm; left: 3mm; }
+.back-corner-br { bottom: 3mm; right: 3mm; transform: rotate(180deg); }
+
+/* Footer on each sheet */
+.sheet-footer {
+  position: absolute;
+  bottom: 4mm;
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 6.5pt;
+  color: var(--dim);
+  letter-spacing: 0.5px;
+}
+</style>
+
+<!-- ============================================
+     FOGLIO 1 — LGJ EVENTI COLLETTIVI · FRONTE
+============================================ -->
+<div class="sheet">
+  <div class="sheet-label">Foglio 1 / 4 · LGJ · Eventi Collettivi · Fronte</div>
+  <div class="print-note">Stampa su A3 · taglia sulle linee tratteggiate</div>
+
+  <div class="grid">
+
+    <div class="card">
+      <span class="card-num">LGJ 01</span><span class="card-kind">Politica</span>
+      <div class="card-title">Reddito di Base Universale</div>
+      <div class="card-body">Una nuova politica garantisce un reddito a tutti. Ogni giocatore riceve 2 bianchi dal fondo comune. Le assemblee dei prossimi 2 turni possono proporre come finanziarlo.</div>
+      <div class="card-social">Gli attori con redditi più bassi sostengono la misura; altri la contestano.</div>
+    </div>
+
+    <div class="card">
+      <span class="card-num">LGJ 02</span><span class="card-kind">Economico</span>
+      <div class="card-title">Iperinflazione</div>
+      <div class="card-body">Tutti i costi operativi aumentano del 50% per i prossimi 3 turni. Le rese rimangono invariate.</div>
+      <div class="card-social">Le tensioni crescono mentre la gente fatica ad acquistare il necessario; potenziali disordini.</div>
+    </div>
+
+    <div class="card">
+      <span class="card-num">LGJ 03</span><span class="card-kind">Ambiente</span>
+      <div class="card-title">Invasione Chimica della Bioregione</div>
+      <div class="card-body">Una bioregione vicina adotta la produzione cerealicola intensiva con agrofarmaci. Il fondo atmosfera guadagna 3 grigi. Ogni fattoria in questa bioregione perde 1 bianco di resa al prossimo turno.</div>
+      <div class="card-social">La comunità si divide su questioni ambientali; possibili proteste.</div>
+    </div>
+
+    <div class="card">
+      <span class="card-num">LGJ 04</span><span class="card-kind">Ambiente</span>
+      <div class="card-title">Mercato del Carbonio Positivo</div>
+      <div class="card-body">Una nuova iniziativa di scambio di carbonio stimola l'economia locale. Rimuovi 3 grigi dal fondo atmosfera. Ogni giocatore con un'attività pulita guadagna 1 bianco.</div>
+      <div class="card-social">Ricezione generalmente positiva; collaborazione comunitaria in progetti verdi.</div>
+    </div>
+
+    <div class="card">
+      <span class="card-num">LGJ 05</span><span class="card-kind">Clima</span>
+      <div class="card-title">Catastrofe da Riscaldamento Globale</div>
+      <div class="card-body">Lancia 1d6 per determinare l'evento: 1 carestia · 2 alluvione · 3 incendio · 4 siccità · 5 uragano · 6 ondata di calore. Il GM narra l'impatto locale. Il fondo atmosfera guadagna 5 grigi.</div>
+      <div class="card-social">L'ansia cresce; possibile solidarietà inaspettata.</div>
+    </div>
+
+    <div class="card">
+      <span class="card-num">LGJ 06</span><span class="card-kind">Estrazione</span>
+      <div class="card-title">Espansione Mineraria</div>
+      <div class="card-body">L'estrazione di risorse aumenta. Un territorio fuori dalla rete (a scelta del GM) viene requisito — il proprietario riceve 3 bianchi di compensazione ma perde il terreno. L'atmosfera guadagna 4 grigi.</div>
+      <div class="card-social">Risentimento locale; possibili proteste contro il degrado ambientale.</div>
+    </div>
+
+    <div class="card">
+      <span class="card-num">LGJ 07</span><span class="card-kind">Demografico</span>
+      <div class="card-title">Migrazione Climatica</div>
+      <div class="card-body">Arrivano nuovi abitanti. Il fondo locale guadagna 4 bianchi (lavoro e tasse) ma le abitazioni scarseggiano. La prossima assemblea deve decidere la politica di integrazione.</div>
+      <div class="card-social">Mescolanza culturale, ma anche potenziale xenofobia e tensione sociale.</div>
+    </div>
+
+    <div class="card">
+      <span class="card-num">LGJ 08</span><span class="card-kind">Sistema alimentare</span>
+      <div class="card-title">Carestia per Mancanza di Manodopera</div>
+      <div class="card-body">La mancanza di lavoratori agricoli provoca scarsità di cibo. Ogni fattoria o elemento alimentare rende la metà questo turno. I giocatori senza elementi alimentari perdono 1 bianco.</div>
+      <div class="card-social">La disperazione cresce; possibili iniziative alimentari comunitarie.</div>
+    </div>
+
+    <div class="card">
+      <span class="card-num">LGJ 09</span><span class="card-kind">Infrastruttura</span>
+      <div class="card-title">Aeroporto Low Cost</div>
+      <div class="card-body">Un nuovo aeroporto porta turismo. I giocatori nella rete guadagnano 2 bianchi per turno per 3 turni. Il fondo atmosfera guadagna 2 grigi per turno per lo stesso periodo.</div>
+      <div class="card-social">Sentimenti misti: il reddito cresce, ma i locali si sentono sopraffatti.</div>
+    </div>
+
+    <div class="card">
+      <span class="card-num">LGJ 10</span><span class="card-kind">Politica</span>
+      <div class="card-title">Programma di Rigenerazione ONU</div>
+      <div class="card-body">Un'iniziativa globale basata su crediti di carbonio finanzia la rigenerazione comunitaria. Il fondo locale guadagna 6 bianchi, destinati a progetti che riducono i grigi.</div>
+      <div class="card-social">Speranza di rivitalizzazione; possibili conflitti sulla distribuzione.</div>
+    </div>
+
+    <div class="card">
+      <span class="card-num">LGJ 11</span><span class="card-kind">Ideologia</span>
+      <div class="card-title">Culto della Fine</div>
+      <div class="card-body">Un movimento carismatico che predica il crollo come destino guadagna seguaci. Il valore sociale scende di 3. Qualsiasi giocatore può ricevere 4 bianchi dal fondo se lo sostiene pubblicamente — e ottiene 2 grigi permanenti.</div>
+      <div class="card-social">La polarizzazione si approfondisce; le amicizie si spezzano.</div>
+    </div>
+
+    <div class="card">
+      <span class="card-num">LGJ 12</span><span class="card-kind" style="color:#b0321f">Estinzione</span>
+      <div class="card-title" style="border-bottom-color:#b0321f">Un Meteorite Colpisce la Terra</div>
+      <div class="card-body"><strong>Il gioco finisce immediatamente.</strong> Nessuno vince. Il GM narra gli ultimi minuti: chi è dove, chi raggiunge chi, cosa viene detto. Poi c'è silenzio al tavolo.</div>
+      <div class="card-social">Una carta pensata per essere estratta una volta nella vita di gioco.</div>
+    </div>
+
+    <!-- 4 carte vuote per eventi personalizzati -->
+    <div class="card card-blank">
+      <span class="card-num">LGJ __</span><span class="card-kind">Personalizzata</span>
+      <div class="card-title">&nbsp;</div>
+      <div class="card-body">Scrivi qui un evento collettivo specifico per lo scenario.</div>
+    </div>
+    <div class="card card-blank">
+      <span class="card-num">LGJ __</span><span class="card-kind">Personalizzata</span>
+      <div class="card-title">&nbsp;</div>
+      <div class="card-body">Scrivi qui un evento collettivo specifico per lo scenario.</div>
+    </div>
+    <div class="card card-blank">
+      <span class="card-num">LGJ __</span><span class="card-kind">Personalizzata</span>
+      <div class="card-title">&nbsp;</div>
+      <div class="card-body">Scrivi qui un evento collettivo specifico per lo scenario.</div>
+    </div>
+    <div class="card card-blank">
+      <span class="card-num">LGJ __</span><span class="card-kind">Personalizzata</span>
+      <div class="card-title">&nbsp;</div>
+      <div class="card-body">Scrivi qui un evento collettivo specifico per lo scenario.</div>
+    </div>
+
+  </div>
+
+  <div class="sheet-footer">Le Grand Jeu · legrandjeu.net · CC BY-NC-SA 4.0</div>
+</div>
+
+<!-- ============================================
+     FOGLIO 2 — LGJ COLLETTIVI · RETRO
+============================================ -->
+<div class="sheet">
+  <div class="sheet-label">Foglio 2 / 4 · LGJ Collettivi · Retro</div>
+  <div class="print-note">Stampa fronte-retro con il Foglio 1</div>
+
+  <div class="grid">
+    <div class="card-back card-back-lgj">
+      <img class="back-corner-logo back-corner-tl" src="../assets/lgj_logo.svg" alt="">
+      <div class="card-back-lgj-inner">
+        <div class="wordmark">Le Grand Jeu</div>
+        <div class="wordmark-sub">Evento Collettivo</div>
+      </div>
+      <img class="back-corner-logo back-corner-br" src="../assets/lgj_logo.svg" alt="">
+    </div>
+    <div class="card-back card-back-lgj">
+      <img class="back-corner-logo back-corner-tl" src="../assets/lgj_logo.svg" alt="">
+      <div class="card-back-lgj-inner"><div class="wordmark">Le Grand Jeu</div><div class="wordmark-sub">Evento Collettivo</div></div>
+      <img class="back-corner-logo back-corner-br" src="../assets/lgj_logo.svg" alt="">
+    </div>
+    <div class="card-back card-back-lgj">
+      <img class="back-corner-logo back-corner-tl" src="../assets/lgj_logo.svg" alt="">
+      <div class="card-back-lgj-inner"><div class="wordmark">Le Grand Jeu</div><div class="wordmark-sub">Evento Collettivo</div></div>
+      <img class="back-corner-logo back-corner-br" src="../assets/lgj_logo.svg" alt="">
+    </div>
+    <div class="card-back card-back-lgj">
+      <img class="back-corner-logo back-corner-tl" src="../assets/lgj_logo.svg" alt="">
+      <div class="card-back-lgj-inner"><div class="wordmark">Le Grand Jeu</div><div class="wordmark-sub">Evento Collettivo</div></div>
+      <img class="back-corner-logo back-corner-br" src="../assets/lgj_logo.svg" alt="">
+    </div>
+
+    <div class="card-back card-back-lgj">
+      <img class="back-corner-logo back-corner-tl" src="../assets/lgj_logo.svg" alt="">
+      <div class="card-back-lgj-inner"><div class="wordmark">Le Grand Jeu</div><div class="wordmark-sub">Evento Collettivo</div></div>
+      <img class="back-corner-logo back-corner-br" src="../assets/lgj_logo.svg" alt="">
+    </div>
+    <div class="card-back card-back-lgj">
+      <img class="back-corner-logo back-corner-tl" src="../assets/lgj_logo.svg" alt="">
+      <div class="card-back-lgj-inner"><div class="wordmark">Le Grand Jeu</div><div class="wordmark-sub">Evento Collettivo</div></div>
+      <img class="back-corner-logo back-corner-br" src="../assets/lgj_logo.svg" alt="">
+    </div>
+    <div class="card-back card-back-lgj">
+      <img class="back-corner-logo back-corner-tl" src="../assets/lgj_logo.svg" alt="">
+      <div class="card-back-lgj-inner"><div class="wordmark">Le Grand Jeu</div><div class="wordmark-sub">Evento Collettivo</div></div>
+      <img class="back-corner-logo back-corner-br" src="../assets/lgj_logo.svg" alt="">
+    </div>
+    <div class="card-back card-back-lgj">
+      <img class="back-corner-logo back-corner-tl" src="../assets/lgj_logo.svg" alt="">
+      <div class="card-back-lgj-inner"><div class="wordmark">Le Grand Jeu</div><div class="wordmark-sub">Evento Collettivo</div></div>
+      <img class="back-corner-logo back-corner-br" src="../assets/lgj_logo.svg" alt="">
+    </div>
+
+    <div class="card-back card-back-lgj">
+      <img class="back-corner-logo back-corner-tl" src="../assets/lgj_logo.svg" alt="">
+      <div class="card-back-lgj-inner"><div class="wordmark">Le Grand Jeu</div><div class="wordmark-sub">Evento Collettivo</div></div>
+      <img class="back-corner-logo back-corner-br" src="../assets/lgj_logo.svg" alt="">
+    </div>
+    <div class="card-back card-back-lgj">
+      <img class="back-corner-logo back-corner-tl" src="../assets/lgj_logo.svg" alt="">
+      <div class="card-back-lgj-inner"><div class="wordmark">Le Grand Jeu</div><div class="wordmark-sub">Evento Collettivo</div></div>
+      <img class="back-corner-logo back-corner-br" src="../assets/lgj_logo.svg" alt="">
+    </div>
+    <div class="card-back card-back-lgj">
+      <img class="back-corner-logo back-corner-tl" src="../assets/lgj_logo.svg" alt="">
+      <div class="card-back-lgj-inner"><div class="wordmark">Le Grand Jeu</div><div class="wordmark-sub">Evento Collettivo</div></div>
+      <img class="back-corner-logo back-corner-br" src="../assets/lgj_logo.svg" alt="">
+    </div>
+    <div class="card-back card-back-lgj">
+      <img class="back-corner-logo back-corner-tl" src="../assets/lgj_logo.svg" alt="">
+      <div class="card-back-lgj-inner"><div class="wordmark">Le Grand Jeu</div><div class="wordmark-sub">Evento Collettivo</div></div>
+      <img class="back-corner-logo back-corner-br" src="../assets/lgj_logo.svg" alt="">
+    </div>
+
+    <div class="card-back card-back-lgj">
+      <img class="back-corner-logo back-corner-tl" src="../assets/lgj_logo.svg" alt="">
+      <div class="card-back-lgj-inner"><div class="wordmark">Le Grand Jeu</div><div class="wordmark-sub">Evento Collettivo</div></div>
+      <img class="back-corner-logo back-corner-br" src="../assets/lgj_logo.svg" alt="">
+    </div>
+    <div class="card-back card-back-lgj">
+      <img class="back-corner-logo back-corner-tl" src="../assets/lgj_logo.svg" alt="">
+      <div class="card-back-lgj-inner"><div class="wordmark">Le Grand Jeu</div><div class="wordmark-sub">Evento Collettivo</div></div>
+      <img class="back-corner-logo back-corner-br" src="../assets/lgj_logo.svg" alt="">
+    </div>
+    <div class="card-back card-back-lgj">
+      <img class="back-corner-logo back-corner-tl" src="../assets/lgj_logo.svg" alt="">
+      <div class="card-back-lgj-inner"><div class="wordmark">Le Grand Jeu</div><div class="wordmark-sub">Evento Collettivo</div></div>
+      <img class="back-corner-logo back-corner-br" src="../assets/lgj_logo.svg" alt="">
+    </div>
+    <div class="card-back card-back-lgj">
+      <img class="back-corner-logo back-corner-tl" src="../assets/lgj_logo.svg" alt="">
+      <div class="card-back-lgj-inner"><div class="wordmark">Le Grand Jeu</div><div class="wordmark-sub">Evento Collettivo</div></div>
+      <img class="back-corner-logo back-corner-br" src="../assets/lgj_logo.svg" alt="">
+    </div>
+
+  </div>
+
+  <div class="sheet-footer">Le Grand Jeu · legrandjeu.net · CC BY-NC-SA 4.0</div>
+</div>
+
+<!-- ============================================
+     FOGLIO 3 — FORTUNA (PERSONALI) · FRONTE
+============================================ -->
+<div class="sheet">
+  <div class="sheet-label">Foglio 3 / 4 · Fortuna · Eventi Personali · Fronte</div>
+  <div class="print-note">Stampa su A3 · taglia sulle linee tratteggiate</div>
+
+  <div class="grid">
+
+    <div class="card">
+      <span class="card-num">EV 01</span><span class="card-kind">Amministrativo</span>
+      <div class="card-title">Ispettore Fiscale</div>
+      <div class="card-body">Viene aperto un controllo sulla tua attività. Paga 2 bianchi al fondo locale. Se non puoi, salta la tua prossima azione.</div>
+      <div class="card-social">Stress e potenziale conflitto con le autorità.</div>
+    </div>
+
+    <div class="card">
+      <span class="card-num">EV 02</span><span class="card-kind">Benessere</span>
+      <div class="card-title">Depressione</div>
+      <div class="card-body">Attraversi un periodo difficile. La tua prossima resa Sviluppa/Sopravvivi è dimezzata. Puoi chiamare un alleato ad agire per te per 1 bianco.</div>
+      <div class="card-social">Possibile isolamento; gli amici possono raccogliersi in supporto.</div>
+    </div>
+
+    <div class="card">
+      <span class="card-num">EV 03</span><span class="card-kind">Fortuna</span>
+      <div class="card-title">Reddito di Base Raddoppiato</div>
+      <div class="card-body">La tua quota di reddito di base è raddoppiata questo turno. Ricevi 3 bianchi dal fondo comune.</div>
+      <div class="card-social">Opportunità per investimenti comunitari.</div>
+    </div>
+
+    <div class="card">
+      <span class="card-num">EV 04</span><span class="card-kind">Mercato</span>
+      <div class="card-title">Centro Commerciale Gigante</div>
+      <div class="card-body">Apre un nuovo centro commerciale vicino a te. Se possiedi un negozio o un elemento artigianale, la sua resa scende di 1 per turno per 3 turni.</div>
+      <div class="card-social">I mercati tradizionali soffrono; la comunità si divide.</div>
+    </div>
+
+    <div class="card">
+      <span class="card-num">EV 05</span><span class="card-kind">Clima</span>
+      <div class="card-title">Raccolto Invernale Scarso</div>
+      <div class="card-body">Un inverno rigido dimezza la resa della tua fattoria, giardino o elemento energetico questo turno.</div>
+      <div class="card-social">La solidarietà cresce; il mutuo soccorso diventa più importante.</div>
+    </div>
+
+    <div class="card">
+      <span class="card-num">EV 06</span><span class="card-kind">Disgrazia</span>
+      <div class="card-title">Le Capre Distruggono Tutto</div>
+      <div class="card-body">Le capre (tue o di un vicino) devastano un raccolto. Perdi 1d4 bianchi di resa. Se incolpi un vicino, può convocare un'assemblea.</div>
+      <div class="card-social">Possibili litigi con i vicini; servono negoziati.</div>
+    </div>
+
+    <div class="card">
+      <span class="card-num">EV 07</span><span class="card-kind">Clima</span>
+      <div class="card-title">L'Alluvione Distrugge il Giardino</div>
+      <div class="card-body">Un'alluvione improvvisa devasta uno dei tuoi territori. Rimuovi qualsiasi elemento costruito lì. Il fondo locale guadagna 2 grigi.</div>
+      <div class="card-social">La comunità può raccogliersi per aiutarti a riprenderti.</div>
+    </div>
+
+    <div class="card">
+      <span class="card-num">EV 08</span><span class="card-kind">Crescita</span>
+      <div class="card-title">Impara a Volare</div>
+      <div class="card-body">Acquisisci una nuova abilità o hobby. Guadagna 1 azione Impara gratuita al tuo prossimo turno. Descrivi di cosa si tratta.</div>
+      <div class="card-social">Potresti ispirare gli altri; diventano possibili workshop.</div>
+    </div>
+
+    <div class="card">
+      <span class="card-num">EV 09</span><span class="card-kind">Sussidio</span>
+      <div class="card-title">Sussidio per l'Energia Eolica</div>
+      <div class="card-body">Ricevi una sovvenzione per investire in energia eolica. Guadagna 4 bianchi destinati a qualsiasi elemento che non produce grigi. Se non utilizzati entro la fine del prossimo turno, tornano al fondo locale.</div>
+      <div class="card-social">Si apre una conversazione comunitaria sulle rinnovabili.</div>
+    </div>
+
+    <div class="card">
+      <span class="card-num">EV 10</span><span class="card-kind">Crisi</span>
+      <div class="card-title">Violazione Informatica</div>
+      <div class="card-body">I tuoi account personali o aziendali vengono compromessi. Perdi 1d6 bianchi. Guadagna +2 al prossimo tiro Impara (hai imparato a tue spese).</div>
+      <div class="card-social">La fiducia nella comunità si incrina; la cybersicurezza sale all'ordine del giorno.</div>
+    </div>
+
+    <div class="card">
+      <span class="card-num">EV 11</span><span class="card-kind">Etica</span>
+      <div class="card-title">Decidere di Fare il Passo Sbagliato</div>
+      <div class="card-body">Sei tentato da un'attività discutibile. Puoi guadagnare 3 bianchi immediatamente — ma il GM ti assegna 2 grigi nascosti che si attivano alla prossima carta fortuna che peschi.</div>
+      <div class="card-social">I dilemmi morali dividono il tuo cerchio; alcuni ti supporteranno, altri ti condanneranno.</div>
+    </div>
+
+    <div class="card">
+      <span class="card-num">EV 12</span><span class="card-kind">Grazia</span>
+      <div class="card-title">Amy Winehouse è di Nuovo Viva</div>
+      <div class="card-body">Contro ogni evidenza, è tornata — e sta suonando un concerto a sorpresa vicino a te. Sei ispirato. Guadagna +2 al prossimo tiro Inventa e 2 bianchi. Se scegli Goditi questo turno, rimuovi 1d6 grigi extra.</div>
+      <div class="card-social">Una breve tregua dal cinismo dell'epoca. La notte è lunga, le canzoni di più.</div>
+    </div>
+
+    <!-- 4 carte vuote personalizzate -->
+    <div class="card card-blank">
+      <span class="card-num">EV __</span><span class="card-kind">Personalizzata</span>
+      <div class="card-title">&nbsp;</div>
+      <div class="card-body">Scrivi qui un evento personale specifico per lo scenario.</div>
+    </div>
+    <div class="card card-blank">
+      <span class="card-num">EV __</span><span class="card-kind">Personalizzata</span>
+      <div class="card-title">&nbsp;</div>
+      <div class="card-body">Scrivi qui un evento personale specifico per lo scenario.</div>
+    </div>
+    <div class="card card-blank">
+      <span class="card-num">EV __</span><span class="card-kind">Personalizzata</span>
+      <div class="card-title">&nbsp;</div>
+      <div class="card-body">Scrivi qui un evento personale specifico per lo scenario.</div>
+    </div>
+    <div class="card card-blank">
+      <span class="card-num">EV __</span><span class="card-kind">Personalizzata</span>
+      <div class="card-title">&nbsp;</div>
+      <div class="card-body">Scrivi qui un evento personale specifico per lo scenario.</div>
+    </div>
+
+  </div>
+
+  <div class="sheet-footer">Le Grand Jeu · legrandjeu.net · CC BY-NC-SA 4.0</div>
+</div>
+
+<!-- ============================================
+     FOGLIO 4 — FORTUNA · RETRO
+============================================ -->
+<div class="sheet">
+  <div class="sheet-label">Foglio 4 / 4 · Fortuna · Retro</div>
+  <div class="print-note">Stampa fronte-retro con il Foglio 3</div>
+
+  <div class="grid">
+    <div class="card-back card-back-event"><div class="card-back-event-inner"><div class="event-word">Evento</div><div class="event-rule"></div><div class="event-sub">Le Grand Jeu</div></div></div>
+    <div class="card-back card-back-event"><div class="card-back-event-inner"><div class="event-word">Evento</div><div class="event-rule"></div><div class="event-sub">Le Grand Jeu</div></div></div>
+    <div class="card-back card-back-event"><div class="card-back-event-inner"><div class="event-word">Evento</div><div class="event-rule"></div><div class="event-sub">Le Grand Jeu</div></div></div>
+    <div class="card-back card-back-event"><div class="card-back-event-inner"><div class="event-word">Evento</div><div class="event-rule"></div><div class="event-sub">Le Grand Jeu</div></div></div>
+
+    <div class="card-back card-back-event"><div class="card-back-event-inner"><div class="event-word">Evento</div><div class="event-rule"></div><div class="event-sub">Le Grand Jeu</div></div></div>
+    <div class="card-back card-back-event"><div class="card-back-event-inner"><div class="event-word">Evento</div><div class="event-rule"></div><div class="event-sub">Le Grand Jeu</div></div></div>
+    <div class="card-back card-back-event"><div class="card-back-event-inner"><div class="event-word">Evento</div><div class="event-rule"></div><div class="event-sub">Le Grand Jeu</div></div></div>
+    <div class="card-back card-back-event"><div class="card-back-event-inner"><div class="event-word">Evento</div><div class="event-rule"></div><div class="event-sub">Le Grand Jeu</div></div></div>
+
+    <div class="card-back card-back-event"><div class="card-back-event-inner"><div class="event-word">Evento</div><div class="event-rule"></div><div class="event-sub">Le Grand Jeu</div></div></div>
+    <div class="card-back card-back-event"><div class="card-back-event-inner"><div class="event-word">Evento</div><div class="event-rule"></div><div class="event-sub">Le Grand Jeu</div></div></div>
+    <div class="card-back card-back-event"><div class="card-back-event-inner"><div class="event-word">Evento</div><div class="event-rule"></div><div class="event-sub">Le Grand Jeu</div></div></div>
+    <div class="card-back card-back-event"><div class="card-back-event-inner"><div class="event-word">Evento</div><div class="event-rule"></div><div class="event-sub">Le Grand Jeu</div></div></div>
+
+    <div class="card-back card-back-event"><div class="card-back-event-inner"><div class="event-word">Evento</div><div class="event-rule"></div><div class="event-sub">Le Grand Jeu</div></div></div>
+    <div class="card-back card-back-event"><div class="card-back-event-inner"><div class="event-word">Evento</div><div class="event-rule"></div><div class="event-sub">Le Grand Jeu</div></div></div>
+    <div class="card-back card-back-event"><div class="card-back-event-inner"><div class="event-word">Evento</div><div class="event-rule"></div><div class="event-sub">Le Grand Jeu</div></div></div>
+    <div class="card-back card-back-event"><div class="card-back-event-inner"><div class="event-word">Evento</div><div class="event-rule"></div><div class="event-sub">Le Grand Jeu</div></div></div>
+  </div>
+
+  <div class="sheet-footer">Le Grand Jeu · legrandjeu.net · CC BY-NC-SA 4.0</div>
+</div>
